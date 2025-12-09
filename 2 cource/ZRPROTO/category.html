@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Архів Українських Казок та Легенд</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="site-body-grid">
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <img src="https://img.freepik.com/premium-vector/coat-arms-ukraine-vector-icon-ukrainian-national-emblem-yellow-blue-colors-vector-illustration-eps-10_532800-348.jpg?w=2000"
+                        alt="Логотип" class="logo-img">
+                    <span class="logo-text">Архів Казок та Легенд</span>
+                </a>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li class="nav-item"><a href="main.html" class="nav-link">Головна</a></li>
+                        <li class="nav-item"><a href="favorite.html" class="nav-link">Улюблені книжки</a></li>
+                        <li class="nav-item"><a href="about.html" class="nav-link">Про сайт</a></li>
+                    </ul>
+                </nav>
+                <div class="mobile-menu-container">
+                    <button id="mobile-menu-button" class="mobile-menu-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="mobile-menu-icon">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                        </svg>
+                    </button>
+                    <div id="mobile-menu" class="mobile-menu hidden">
+                        <a href="main.html" class="mobile-menu-link">Головна</a>
+                        <a href="favorite.html" class="mobile-menu-link">Улюблені казки</a>
+                        <a href="about.html" class="mobile-menu-link">Про сайт</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="main-sidebar-wrapper">
+            <aside class="sidebar-aside">
+                <div class="sidebar-filter">
+                    <div class="sidebar-search"> <input type="text" placeholder="Пошук за назвою...">
+                    </div>
+
+                    <div class="sidebar-filter-block">
+                        <h3>Жанр</h3>
+                        <select class="sidebar-select">
+                            <option value="">Всі жанри</option>
+                            <option value="animals">Про тварин</option>
+                            <option value="magic">Чарівні казки</option>
+                            <option value="everyday">Побутові казки</option>
+                            <option value="legends">Казки-легенди</option>
+                            <option value="heroes">Героїчні казки</option>
+                            <option value="other">Інші</option>
+                        </select>
+                    </div>
+
+                    <div class="sidebar-filter-block">
+                        <h3>Автор</h3>
+                        <select class="sidebar-select">
+                            <option value="">Всі автори</option>
+                            <option value="ivan_franko">Іван Франко</option>
+                            <option value="lesya_ukrainka">Леся Українка</option>
+                            <option value="olena_pchilkа">Олена Пчілка</option>
+                            <option value="ukrainian_folk">Народні</option>
+                        </select>
+                    </div>
+
+                    <div class="sidebar-filter-block">
+                        <h3>Кількість сторінок</h3>
+                        <select class="sidebar-select">
+                            <option value="">Будь-яка</option>
+                            <option value="1-10">1-10</option>
+                            <option value="11-30">11-30</option>
+                            <option value="31-50">31-50</option>
+                            <option value="50+">50+</option>
+                        </select>
+                    </div>
+
+                </div>
+            </aside>
+            <div class="page-content-area">
+                <section class="category-page-section">
+                    <h1 class="page-main-title"> Казки </h1>
+                    <hr style="width: 90%; margin-bottom: 40px;">
+                    <div class="item-card-list-grid">
+                        <div class="item-card">
+                            <div class="item-card-image-placeholder"><img
+                                    src="https://forkids.org.ua/wp-content/uploads/lysychka-i-zhuravel.webp"
+                                    alt="Лисичка та Журавель"></div>
+                            <h3 class="item-card-title">Лисичка та Журавель</h3>
+                            <div class="item-card-buttons">
+                                <button class="button item-card-read-button"><a href="book.html">Детальніше</a></button>
+                                <button class="button item-card-favorite-button">❤</button>
+                            </div>
+                        </div>
+                        <div class="item-card">
+                            <div class="item-card-image-placeholder"><img
+                                    src="https://th.bing.com/th/id/OIP.s7kU0SqWsksXuUwrwO1hzAHaEK?cb=iwp2&rs=1&pid=ImgDetMain"
+                                    alt="Мавпа і її діти"></div>
+                            <h3 class="item-card-title">Мавпа і її діти</h3>
+                            <div class="item-card-buttons">
+                                <button class="button item-card-read-button"><a href="book.html">Детальніше</a></button>
+                                <button class="button item-card-favorite-button">❤</button>
+                            </div>
+                        </div>
+                        <div class="item-card">
+                            <div class="item-card-image-placeholder"><img
+                                    src="https://kazochka.org.ua/images/kazky/koroleva-zmiy.jpg" alt="Царівна Змія">
+                            </div>
+                            <h3 class="item-card-title">Царівна Змія</h3>
+                            <div class="item-card-buttons">
+                                <button class="button item-card-read-button"><a href="book.html">Детальніше</a></button>
+                                <button class="button item-card-favorite-button">❤</button>
+                            </div>
+                        </div>
+                        <div class="item-card">
+                            <div class="item-card-image-placeholder"><img
+                                    src="https://th.bing.com/th/id/OIP.64-uOsMQ6jGtXAmu4JZh_QHaFj?cb=iwp2&rs=1&pid=ImgDetMain"
+                                    alt="Баба Яга"></div>
+                            <h3 class="item-card-title">Баба Яга</h3>
+                            <div class="item-card-buttons">
+                                <button class="button item-card-read-button"><a href="book.html">Детальніше</a></button>
+                                <button class="button item-card-favorite-button">❤</button>
+                            </div>
+                        </div>
+                        <div class="item-card">
+                            <div class="item-card-image-placeholder"><img
+                                    src="https://library-poems.com/wp-content/uploads/2022/08/baba-i-chor-ukrainska-narodna-kazka.jpg"
+                                    alt="Баба і чорт"></div>
+                            <h3 class="item-card-title">Баба і чорт</h3>
+                            <div class="item-card-buttons">
+                                <button class="button item-card-read-button"><a href="book.html">Детальніше</a></button>
+                                <button class="button item-card-favorite-button">❤</button>
+                            </div>
+                        </div>
+                        <div class="item-card">
+                            <div class="item-card-image-placeholder"><img
+                                    src="https://naurok-test.nyc3.cdn.digitaloceanspaces.com/uploads/test/43701/317112/476533_1587930898.jpg"
+                                    alt="Убогий та багатий"></div>
+                            <h3 class="item-card-title">Убогий та багатий</h3>
+                            <div class="item-card-buttons">
+                                <button class="button item-card-read-button"><a href="book.html">Детальніше</a></button>
+                                <button class="button item-card-favorite-button">❤</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="category-page-section">
+                    <h1 class="page-main-title"> Легенди
+                    </h1>
+                    <hr style="width: 90%; margin-bottom: 40px;">
+                    <div class="item-card-list-grid">
+                        <div class="item-card">
+                            <div class="item-card-image-placeholder"><img
+                                    src="https://th.bing.com/th/id/OIP.0IsAkGBATLYsVjgPF8LmUAHaFe?cb=iwp2&rs=1&pid=ImgDetMain"
+                                    alt="Неопалима купина"></div>
+                            <h3 class="item-card-title">Неопалима купина</h3>
+                            <div class="item-card-buttons">
+                                <button class="button item-card-read-button"><a href="book.html">Детальніше</a></button>
+                                <button class="button item-card-favorite-button">❤</button>
+                            </div>
+                        </div>
+                        <div class="item-card">
+                            <div class="item-card-image-placeholder"><img
+                                    src="https://tureligious.com.ua/wp-content/uploads/2021/03/dagboggg.jpg"
+                                    alt="Дажбог">
+                            </div>
+                            <h3 class="item-card-title">Дажбог</h3>
+                            <div class="item-card-buttons">
+                                <button class="button item-card-read-button"><a href="book.html">Детальніше</a></button>
+                                <button class="button item-card-favorite-button">❤</button>
+                            </div>
+                        </div>
+                        <div class="item-card">
+                            <div class="item-card-image-placeholder"><img
+                                    src="https://cp12.nevsepic.com.ua/2-2/1358104947-1033908-www.nevsepic.com.ua.jpg"
+                                    alt="Змієві вали"></div>
+                            <h3 class="item-card-title">Змієві вали</h3>
+                            <div class="item-card-buttons">
+                                <button class="button item-card-read-button"><a href="book.html">Детальніше</a></button>
+                                <button class="button item-card-favorite-button">❤</button>
+                            </div>
+                        </div>
+                        <div class="item-card">
+                            <div class="item-card-image-placeholder"><img
+                                    src="https://th.bing.com/th/id/OIP.kzBjmdOiXi6MfP4_RMaG-AHaFU?cb=iwp2&w=1346&h=967&rs=1&pid=ImgDetMain"
+                                    alt="Легенда про вітер"></div>
+                            <h3 class="item-card-title">Легенда про вітер</h3>
+                            <div class="item-card-buttons">
+                                <button class="button item-card-read-button"><a href="book.html">Детальніше</a></button>
+                                <button class="button item-card-favorite-button">❤</button>
+                            </div>
+                        </div>
+                        <div class="item-card">
+                            <div class="item-card-image-placeholder"><img
+                                    src="https://th.bing.com/th/id/OIP.CpxjEyBtuzod5YixW_kWmwHaE8?cb=iwp2&w=600&h=400&rs=1&pid=ImgDetMain"
+                                    alt="Чому буває сумне сонце?"></div>
+                            <h3 class="item-card-title">Чому буває сумне сонце?</h3>
+                            <div class="item-card-buttons">
+                                <button class="button item-card-read-button"><a href="book.html">Детальніше</a></button>
+                                <button class="button item-card-favorite-button">❤</button>
+                            </div>
+                        </div>
+                        <div class="item-card">
+                            <div class="item-card-image-placeholder"><img
+                                    src="https://th.bing.com/th/id/OIP.Q89_etsnr_BCgOyv0NYTfwHaD3?w=324&h=180&c=7&r=0&o=7&cb=iwp2&pid=1.7&rm=3"
+                                    alt="Як виникли Карпати"></div>
+                            <h3 class="item-card-title">Як виникли Карпати</h3>
+                            <div class="item-card-buttons">
+                                <button class="button item-card-read-button"><a href="book.html">Детальніше</a></button>
+                                <button class="button item-card-favorite-button">❤</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="container">
+            <div class="info bottom-bar">
+                <h1 class="bottom-name">Перейти на: </h1>
+                <ul>
+                    <li><a href="main.html" class="nav-link nav-bot">Головна</a></li>
+                    <li><a href="favorite.html" class="nav-link nav-bot">Улюблені казки</a></li>
+                    <li><a href="about.html" class="nav-link nav-bot">Про сайт</a></li>
+                </ul>
+            </div>
+            <div class="info social-links">
+                <h1 class="bottom-name">Соц. мережі:</h1>
+                <ul class="nav-list">
+                    <li class="nav-item social-link"><a href="#" class="nav-link">YT</a></li>
+                    <li class="nav-item social-link"><a href="#" class="nav-link">FB</a></li>
+                    <li class="nav-item social-link"><a href="#" class="nav-link">TG</a></li>
+                </ul>
+            </div>
+            <div class="info subscribe">
+                <div class="subscribe-content">
+                    <h1 class="bottom-name">Підпишіться на розсилку:</h1>
+                </div>
+                <form class="subscribe-form">
+                    <input type="email" class="form-input" placeholder="Ваш Email" required>
+                    <button type="submit" class="button subscribe-button">Підписатись</button>
+                </form>
+            </div>
+        </div>
+        <div class="prava">
+            2024 Архів Українських Казок та Легенд. Всі права захищено.
+        </div>
+    </footer>
+</body>
+
+</html>

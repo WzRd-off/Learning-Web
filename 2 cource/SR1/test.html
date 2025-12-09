@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Тест</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="header">
+        <h2>Пройдіть тест</h2>
+    </div>
+    <form action="results.html" method="get">
+
+        <div id="test">
+            <p>1. Який оператор використовується для виконання умови в JavaScript?</p>
+            <label><input type="radio" name="q1" value="if"> if</label><br>
+            <label><input type="radio" name="q1" value="for"> for</label><br>
+            <label><input type="radio" name="q1" value="while"> while</label>
+        </div>
+
+        <div id="test">
+            <p>2. Який з наступних варіантів є правильним синтаксисом умовного оператора?</p>
+            <input type="text" name="q2">
+        </div>
+
+        <div id="test">
+            <p>3. Який результат буде у виразу <code>5 > 3 ? "Так" : "Ні"</code>?</p>
+            <label><input type="checkbox" name="q3" value="Так"> Так</label><br>
+            <label><input type="checkbox" name="q3" value="Ні"> Ні</label><br>
+            <label><input type="checkbox" name="q3" value="Помилка"> Помилка</label>
+        </div>
+
+        <div id="btn">
+            <p>
+                <button id="sub" type="submit" formmethod="get" formaction="result.html">Надіслати</button>
+                <button id="res" type="reset">Скинути</button>
+            </p>
+        </div>
+    </form>
+</body>
+
+</html>

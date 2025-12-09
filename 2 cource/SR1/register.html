@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Реєстрація</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="form">
+        <h1 class="hh1">Реєстрація</h1>
+
+        <form method="get" action="index.html" style="padding: 10px; margin-left: 100px;">
+            <p><input type="text" maxlength="20" placeholder="Ім'я Прізвище" required>
+            </p>
+            <p><input type="email" name="email" maxlength="30" placeholder="Email" required></p>
+            <p><input type="tel" name="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="Номер телефону"></p>
+            <p><input type="password" name="password" maxlength="18" placeholder="Пароль" required></p>
+            <p><input type="date" name="date" placeholder="Оберіть дату народження"></p>
+            <p><input list="sex" type="text" name="sex" placeholder="Оберіть вашу стать"></p>
+            <p><input type="text" name="adress" placeholder="Адреса"></p>
+            <p><input type="file" name="file"></p>
+            <p>
+                <label for="1">Угода про умови використання</label>
+                <input id="1" type="checkbox" required>
+            </p>
+            <p>
+                <button id="sub" type="submit" formmethod="get" formaction="profile.html">Надіслати</button>
+                <button class="reg_res" type="reset">Скинути</button>
+            </p>
+
+        </form>
+        <datalist id="sex">
+            <option value="Чоловік"></option>
+            <option value="Жінка"></option>
+        </datalist>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Управління Будинком</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload="initializeAndRender()">
+
+    <h1>🏠 Система "Житловий Будинок"</h1>
+
+    <div class="controls">
+
+        <div class="block">
+            <legend>Майстер управління мешканцями</legend>
+            <div class="form-like-div">
+                <select id="masterActionSelect" onchange="handleActionChange()">
+                    <option value="">-- Оберіть дію --</option>
+                    <option value="add">1. Додати мешканця</option>
+                    <option value="remove">2. Виселити мешканця</option>
+                    <option value="replaceOne">3. Замінити одного мешканця</option>
+                    <option value="replaceAll">4. Замінити ВСІХ мешканців (Передача Масиву)</option>
+                </select>
+
+                <div id="inputs_flat" class="input-group" style="display: none;">
+                    <input type="number" id="master_flatNum" placeholder="№ квартири" min="1">
+                </div>
+                <div id="inputs_name" class="input-group" style="display: none;">
+                    <input type="text" id="master_name" placeholder="Ім'я мешканця">
+                </div>
+                <div id="inputs_old_name" class="input-group" style="display: none;">
+                    <input type="text" id="master_old_name" placeholder="Старе ім'я">
+                </div>
+                <div id="inputs_new_name" class="input-group" style="display: none;">
+                    <input type="text" id="master_new_name" placeholder="Нове ім'я">
+                </div>
+                <div id="inputs_list" class="input-group" style="display: none;">
+                    <input type="text" id="master_list" placeholder="Імена, через кому">
+                </div>
+                
+                <button type="button" onclick="handleMasterExecute()">Виконати</button>
+            </div>
+        </div>
+
+        </div>
+
+    <h2>План Будинку</h2>
+    <div id="building">
+        </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>

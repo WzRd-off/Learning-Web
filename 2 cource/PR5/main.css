@@ -1,0 +1,278 @@
+body {
+    background-color: #F3EFE9;
+    font-family: "Poiret One", sans-serif;
+    font-weight: 200;
+    font-style: normal;
+    margin: 0;
+}
+
+/*HEADER*/
+header {
+    grid-template-columns: 50%;
+    grid-template-rows: 20%;
+    display: grid;
+    justify-content: center;
+    color: #FEF8DB;
+    min-height: 950px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('img/background.jpg');
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 10px;
+}
+
+
+.top-logo,
+.bottom-logo {
+    text-align: center;
+    font-family: "Emblema One", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.top-logo {
+    font-size: 2em;
+}
+
+.bottom-logo {
+    padding: 50px 0 20px 0;
+    font-size: 1em;
+}
+
+.top-bar nav {
+    margin-left: -4%;
+    padding: 15px 0;
+}
+
+.top-bar nav ul {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    gap: 120px;
+}
+
+
+.top-bar nav ul li a {
+    position: relative;
+    color: #FEF8DB;
+    text-decoration: none;
+    font-size: 2em;
+    font-weight: bold;
+    padding: 5px 10px;
+}
+
+.top-bar nav ul li a::after {
+    content: "";
+    left: 0;
+    position: absolute;
+    bottom: -2px;
+    width: 100%;
+    border-bottom: 2px solid;
+    transform: scaleX(0);
+    transition: transform 0.5s ease-in-out;
+}
+
+.top-bar nav ul li a:hover::after {
+    transform: scaleX(1);
+}
+
+/* MAIN */
+
+main {
+    margin: 0 auto;
+    width: 85%;
+    margin-bottom: 10px;
+    color: #72594c;
+    background-color: #E1D8C7;
+    border-radius: 5px;
+    min-height: 500px;
+    padding: 20px;
+}
+
+
+.about-us {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 80%;
+    margin: 0 auto;
+    margin-bottom: 100px;
+    align-items: center;
+    gap: 20px;
+}
+
+main h1 {
+    width: 100%;
+    text-align: left;
+    font-size: 2em;
+}
+
+.image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.image img {
+    border-radius: 10px;
+    max-height: 400px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 700px;
+}
+
+.text {
+    flex: 1;
+    color: #302623;
+    font-family: "Source Code Pro", monospace;
+    font-weight: 400;
+    font-size: 1.6em;
+    max-width: 400px;
+}
+
+
+.production {
+    display: grid;
+    grid-template-columns: 1fr;
+    max-width: 80%;
+    margin: 0 auto;
+
+}
+
+.products {
+    margin: 0 auto;
+    position: relative;
+    width: 80%;
+    height: 600px;
+}
+
+.product {
+    position: absolute;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+}
+
+.product img {
+    width: 100%;
+    height: auto;
+}
+
+.products-name {
+    text-align: center;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.drinks {
+    width: 280px;
+    height: 320px;
+    top: 10px;
+    left: 40px;
+    transform: rotate(-10deg);
+    transition: transform 0.3s ease-in-out;
+}
+
+.bakery {
+    width: 340px;
+    height: 360px;
+    bottom: 30px;
+    left: 320px;
+    transform: rotate(5deg);
+    transition: transform 0.3s ease-in-out;
+}
+
+.desserts {
+    width: 270px;
+    height: 400px;
+    top: 60px;
+    right: 0px;
+    transform: rotate(15deg);
+    transition: transform 0.3s ease-in-out;
+}
+
+.drinks:hover {
+    transform: translateY(-10px) translateX(-4px) rotate(-10deg);
+}
+
+.bakery:hover {
+    transform: translateY(-10px) translateX(2px) rotate(5deg);
+}
+
+.desserts:hover {
+    transform: translateY(-10px) translateX(6px) rotate(15deg);
+}
+
+/* FOOTER */
+
+footer {
+    background: #73503C;
+    color: #FEF8DB;
+    padding: 20px;
+}
+
+
+.footer-container {
+    display: flex;
+    font-size: 1.4em;
+}
+
+.bottom-bar {
+    flex: 1;
+    width: 60%;
+}
+
+.bottom-bar nav {
+    margin-left: 10%;
+    padding: 15px 0;
+}
+
+.bottom-bar nav ul {
+    display: flex;
+    list-style: none;
+    gap: 220px;
+}
+
+
+.bottom-bar nav ul li a {
+    position: relative;
+    color: #FEF8DB;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 10px;
+}
+
+.bottom-bar nav ul li a::after {
+    content: "";
+    left: 0;
+    position: absolute;
+    bottom: -2px;
+    width: 100%;
+    border-bottom: 2px solid;
+    transform: scaleX(0);
+    transition: transform 0.5s ease-in-out;
+}
+
+.bottom-bar nav ul li a:hover::after {
+    transform: scaleX(1);
+}
+
+.adress {
+    width: 30%;
+    flex: -1;
+}
+
+.adress p {
+    font-size: 1.3em;
+}
+
+hr {
+    background-color: #FEF8DB;
+    width: 85%;
+}
+
+* {
+    box-sizing: border-box;
+}

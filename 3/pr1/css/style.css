@@ -1,0 +1,235 @@
+/* --- Загальні стилі --- */
+:root {
+    --primary-bg: #ffffff;
+    --secondary-bg: #f4f7f9;
+    --header-footer-bg: #2c3e50;
+    --primary-text: #333333;
+    --light-text: #ffffff;
+    --accent-color: #e67e22;
+    --correct-bg: #d4edda;
+    --incorrect-bg: #f8d7da;
+    --border-color: #dddddd;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    background-color: var(--secondary-bg);
+    color: var(--primary-text);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- Шапка та Підвал --- */
+.site-header, .site-footer {
+    background-color: var(--header-footer-bg);
+    color: var(--light-text);
+    padding: 20px 0;
+}
+
+.site-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    margin: 0;
+    font-size: 24px;
+}
+
+.main-nav a {
+    color: var(--light-text);
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+.main-nav a:hover, .main-nav a.active {
+    color: var(--accent-color);
+    font-weight: bold;
+}
+
+.site-footer {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.main-content {
+    padding: 40px 0;
+}
+
+.page-title {
+    font-size: 32px;
+    margin-bottom: 10px;
+    border-bottom: 3px solid var(--accent-color);
+    padding-bottom: 10px;
+}
+
+.page-subtitle {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+/* --- index.html --- */
+.subject-section {
+    background-color: var(--primary-bg);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.subject-title {
+    font-size: 24px;
+    margin-top: 0;
+}
+
+.articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.article-card {
+    border: 1px solid var(--border-color);
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.article-title {
+    margin-top: 0;
+}
+
+/* --- tests.html --- */
+.subject-accordion {
+    margin-bottom: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+}
+
+.subject-accordion summary {
+    padding: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: var(--primary-bg);
+    transition: background-color 0.3s;
+}
+
+.subject-accordion summary:hover {
+    background-color: #e9ecef;
+}
+
+.test-list {
+    list-style: none;
+    padding: 10px 15px;
+    margin: 0;
+    background-color: #f8f9fa;
+}
+
+.test-list .test-link {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #007bff;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.test-list .test-link:hover {
+    background-color: #e2e6ea;
+}
+
+.test-display-area {
+    margin-top: 30px;
+    background: var(--primary-bg);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.test-placeholder {
+    color: #666;
+    font-size: 18px;
+    text-align: center;
+}
+
+.test-block .question {
+    margin-bottom: 25px;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.test-block .question p {
+    font-weight: bold;
+    margin-top: 0;
+}
+
+.test-block .question label {
+    display: block;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.test-block .question label:hover {
+    background-color: #f4f4f4;
+}
+
+.check-test-btn {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--light-text);
+    background-color: var(--accent-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.check-test-btn:hover {
+    background-color: #d35400;
+}
+
+.question .correct {
+    background-color: var(--correct-bg);
+    border-color: #c3e6cb;
+}
+.question .incorrect {
+    background-color: var(--incorrect-bg);
+    border-color: #f5c6cb;
+}
+
+/* --- resources.html --- */
+.resource-section {
+    margin-bottom: 30px;
+}
+.formula-list, .links-list {
+    list-style: none;
+    padding: 0;
+}
+.formula-list li, .links-list li {
+    background: var(--primary-bg);
+    padding: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+.links-list a {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+}

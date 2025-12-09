@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Світлофори</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Симуляція роботи світлофорів</h1>
+    <div class="traffic-light-container">
+        <div class="traffic-light" id="traffic-light-A">
+            <div class="light red"></div>
+            <div class="light yellow"></div>
+            <div class="light green"></div>
+        </div>
+
+        <div class="traffic-light" id="traffic-light-B">
+            <div class="light red"></div>
+            <div class="light yellow"></div>
+            <div class="light green"></div>
+        </div>
+
+        <div class="traffic-light" id="traffic-light-C">
+            <div class="light red"></div>
+            <div class="light yellow"></div>
+            <div class="light green"></div>
+        </div>
+    </div>
+    <div class="controls">
+        <button id="start-button" onclick="startSimulation()">Запустити симуляцію</button>
+        <button id="pause-button" onclick="pauseSimulation()">Поставити на паузу</button>
+        <button id="continue-button" onclick="continueSimulation()">Продовжити</button>
+    </div>
+    <div class="signal">
+        <h2>Сигнал тривоги</h2>
+        <input type="text" id="emergency-input" placeholder="Введіть повідомлення тривоги(доступні: пожежа, лікарня)">
+        <button id="emergency-button" onclick="emergencySignal()">Тривога</button>
+    </div>
+    <div class="config">
+        <h2>Конфігурація користувача (Час, A, B, C)</h2>
+        <textarea id="user-config" rows="4" cols="50"
+            placeholder="Наприклад:&#10;7 Red Green Red&#10;2 Yellow Yellow Red"></textarea>
+        <button id="config-button" onclick="getUserConfig()">Завантажити конфігурацію</button>
+    </div>
+
+    <div id="log-output"></div>
+    <div id="final-results"></div>
+
+    <script src="scripts.js"></script>
+</body>
+
+</html>

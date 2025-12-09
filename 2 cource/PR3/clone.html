@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Vinton Cerf - Personal Blog</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        header {
+            background-color: #0073e6;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav ul {
+            padding: 0;
+            list-style: none;
+            text-align: center;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 18px;
+        }
+
+        section {
+            background-color: white;
+            padding: 20px;
+            margin: 10px 0;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        img#avatar {
+            border-radius: 5px;
+            height: 200px;
+            float: left;
+            margin-right: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Персональна сторінка Вінтона Серфа</h1>
+        <nav>
+            <ul>
+                <li><a href="#about">Про мене</a></li>
+                <li><a href="#travel">Мої подорожі</a></li>
+                <li><a href="#gallery">Галерея</a></li>
+                <li><a href="#contact">Контакти</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="about">
+        <h2>Про мене</h2>
+        <img id="avatar" src="image/avatar.jpg" alt="Vinton Cerf">
+        <p><strong>Вінтон Серф</strong> - один із "батьків" Інтернету, відомий науковець в галузі комп'ютерних мереж.
+        </p>
+    </section>
+
+    <section id="travel">
+        <h2>Мої подорожі</h2>
+        <ul>
+            <li>США - Каліфорнія, Вашингтон</li>
+            <li>Європа - Лондон, Берлін, Париж</li>
+            <li>Азія - Токіо, Сеул</li>
+        </ul>
+        <table>
+            <tr>
+                <th>Країна</th>
+                <th>Рік</th>
+            </tr>
+            <tr>
+                <td>Японія</td>
+                <td>2023</td>
+            </tr>
+            <tr>
+                <td>Франція</td>
+                <td>2022</td>
+            </tr>
+        </table>
+    </section>
+
+    <section id="gallery">
+        <h2>Галерея</h2>
+        <figure>
+            <img src="image/sunset.jpg" alt="Закат сонця">
+            <figcaption>Найкрасивіший захід сонця</figcaption>
+        </figure>
+    </section>
+
+    <section id="contact">
+        <h2>Контакти</h2>
+        <form>
+            <label for="name">Ім'я:</label>
+            <input type="text" id="name" name="name" required placeholder="Введіть ваше ім'я"><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required placeholder="example@mail.com"><br>
+
+            <label for="phone">Телефон:</label>
+            <input type="tel" id="phone" name="phone" pattern="\+\d{12}" placeholder="+380XXXXXXXXX"><br>
+
+            <button type="submit">Надіслати</button>
+        </form>
+    </section>
+
+    <section>
+        <h2>Рекомендації</h2>
+        <details>
+            <summary>Як обирати місце для подорожей?</summary>
+            <p>Оберіть місце, яке відповідає вашим інтересам та бюджету.</p>
+        </details>
+    </section>
+
+    <section>
+        <h2>FAQ</h2>
+        <details>
+            <summary>Чи потрібно бронювати квитки заздалегідь?</summary>
+            <p>Так, це допоможе зекономити гроші.</p>
+        </details>
+    </section>
+</body>
+
+</html>

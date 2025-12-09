@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Архів Українських Казок</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <img src="logo.png" alt="Логотип" class="logo-img">
+                    <span class="logo-text">Архів Українських Казок</span>
+                </a>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Казки</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Про сайт</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Контакти</a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="mobile-menu-container">
+                    <button class="mobile-menu-button" id="mobile-menu-button">
+
+                    </button>
+                    <div class="mobile-menu hidden" id="mobile-menu">
+                        <a href="#" class="mobile-menu-link">Казки</a>
+                        <a href="#" class="mobile-menu-link">Про сайт</a>
+                        <a href="#" class="mobile-menu-link">Контакти</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="slideshow">
+            <div class="container">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide slide-1">
+                            <h2 class="slide-title">Котигорошко</h2>
+                            <p class="slide-text">Ілюстрована казка про богатиря Котигорошка.</p>
+                        </div>
+                        <div class="swiper-slide slide-2">
+                            <h2 class="slide-title">Мавка</h2>
+                            <p class="slide-text">Легенда про Мавку, духа лісу.</p>
+                        </div>
+                        <div class="swiper-slide slide-3">
+                            <h2 class="slide-title">Про Запорожців</h2>
+                            <p class="slide-text">Оповіді про славних козаків Запорозької Січі.</p>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+                <div class="info-block">
+                    <h2 class="info-title">Ласкаво просимо!</h2>
+                    <p class="info-text">Ласкаво просимо до чарівного світу українських народних казок! Тут ви
+                        знайдете мудрі історії, героїчні оповіді та захопливі перекази, що передавалися з покоління в
+                        покоління.</p>
+                    <p class="info-action">Пориньте у багатство української фольклорної спадщини!</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section kazky-section">
+            <div class="container">
+                <h2 class="section-title">Каталог Казок</h2>
+                <div class="grid">
+                    <div class="card">
+                        <img src="fox.jpg" alt="Лисичка" class="card-img">
+                        <div class="card-body">
+                            <h3 class="card-title">Казки про тварин</h3>
+                            <p class="card-text">Казки про хитрих лисиць, мудрих вовків та інших тварин.</p>
+                            <a href="#" class="card-link">Перейти до розділу</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="magic_wand.jpg" alt="Чарівна паличка" class="card-img">
+                        <div class="card-body">
+                            <h3 class="card-title">Чарівні казки</h3>
+                            <p class="card-text">Історії про чарівників, драконів та неймовірні пригоди.</p>
+                            <a href="#" class="card-link">Перейти до розділу</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="peasant_house.jpg" alt="Селянська хата" class="card-img">
+                        <div class="card-body">
+                            <h3 class="card-title">Побутові казки</h3>
+                            <p class="card-text">Казки про життя звичайних людей та їхні хитрощі.</p>
+                            <a href="#" class="card-link">Перейти до розділу</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="section about-section">
+            <div class="container">
+                <h2 class="section-title">Нові надходження</h2>
+                <div class="grid">
+                    <div class="card">
+                        <img src="new_kazka.jpg" alt="Нова казка" class="card-img">
+                        <div class="card-body">
+                            <h3 class="card-title">Нова казка: "Пригоди..."</h3>
+                            <p class="card-text">Нова захоплива історія про неймовірні пригоди.</p>
+                            <a href="#" class="card-link">Читати далі</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section contacts-section">
+            <div class="container">
+                <h2 class="section-title">Рекомендовано</h2>
+                <div class="grid">
+                    <div class="card">
+                        <img src="recommended_kazka.jpg" alt="Рекомендована казка" class="card-img">
+                        <div class="card-body">
+                            <h3 class="card-title">Казка: "Найкраща історія"</h3>
+                            <p class="card-text">Одна з найпопулярніших казок нашого архіву.</p>
+                            <a href="#" class="card-link">Детальніше</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section subscribe-section">
+            <div class="container">
+                <h2 class="section-title">Підпишіться на новини!</h2>
+                <form class="subscribe-form" id="subscribe-form">
+                    <input type="email" class="subscribe-input" id="subscribe-email" placeholder="Введіть ваш email">
+                    <button type="submit" class="subscribe-button" id="subscribe-button">Підписатися</button>
+                </form>
+                <div id="subscription-message" class="subscription-message hidden">Дякуємо за підписку!</div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>2024 Архів Українських Казок. Всі права захищено.</p>
+                <div class="social-links">
+                    <a href="#" title="Facebook">Facebook</a>
+                    <a href="#" title="Twitter">Twitter</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const swiper = new Swiper('.swiper-container', {
+                loop: true,
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+            });
+        });
+    </script>
+</body>
+
+</html>

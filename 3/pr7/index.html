@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vending Machine</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+</head>
+<body>
+
+<div class="vending-machine-container">
+    <aside class="filter-panel">
+        <div class="filters">
+            <h3>Категорії</h3>
+            <ul>
+                <li>
+                    <label>
+                        <input type="checkbox" class="category-filter" value="Напої">
+                        Напої
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="checkbox" class="category-filter" value="Вода">
+                        Вода
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="checkbox" class="category-filter" value="Закуски">
+                        Закуски
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="checkbox" class="category-filter" value="Цукерки">
+                        Цукерки
+                    </label>
+                </li>
+            </ul>
+            <h3>Ціна</h3>
+            <div class="price-filter">
+                <label for="min-price">Від:</label>
+                <input type="number" id="min-price" placeholder="0">
+                <br>
+                <label for="max-price">До:</label>
+                <input type="number" id="max-price" placeholder="1000">
+            </div>
+            <h3>Дата</h3>
+            <div class="data-filter">
+                <label for="start-date">З:</label>
+                <input type="date" id="start-date">
+                <br>
+                <label for="end-date">До:</label>
+                <input type="date" id="end-date">
+            </div>
+            <button id="apply-filter" class="btn-apply-filter" onclick="applyFilters()">Застосувати</button>
+            <button id="undo-filter" class="btn-undo-filter" onclick="resetFilters()    ">Скинути</button>
+        </div>
+    </aside>
+    <div class="vending-machine">
+        
+        <section class="display-section">
+            <header class="header">
+                <h1>VendMarket <span class="highlight">Light</span></h1>
+            </header>
+
+            <div class="controls-bar card-panel">
+                <div class="search-box input-group">
+                    <span class="material-icons-round icon">search</span>
+                    <input type="text" id="search-input" placeholder="Пошук товару...">
+                </div>
+                <div class="sorts">
+                    <select id="sort-select" class="input-select">
+                        <option value="default">Сортування</option>
+                        <option value="price-asc">Ціна: Дешевше</option>
+                        <option value="price-desc">Ціна: Дорожче</option>
+                        <option value="date-new">Спочатку нові</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="products-grid" class="products-grid scrollable-y">
+                <!-- Товари будуть динамічно додаватися сюди -->
+            </div>
+        </section>
+
+        <aside class="interface-panel">
+            
+            <div class="panel-block card-panel cart-block">
+                <h2><span class="material-icons-round">shopping_basket</span> Кошик</h2>
+                <div id="cart-items" class="cart-items scrollable-y">
+                </div>
+            </div>
+
+            <div class="panel-block lcd-screen">
+                <div class="row"><span>Підсумок:</span><span id="subtotal">0.00 ₴</span></div>
+                <div class="row discount-row"><span>Знижка:</span><span id="discount-total">0.00 ₴</span></div>
+                <div class="row tax-row"><span>ПДВ (20%):</span><span id="tax-amount">0.00 ₴</span></div>
+                <div class="lcd-divider"></div>
+                <div class="row total-row"><span>ДО СПЛАТИ:</span><span id="final-total">0.00 ₴</span></div>
+            </div>
+
+            <div class="actions">
+                <button id="checkout-btn" class="btn-primary btn-lg">ОФОРМИТИ ПОКУПКУ</button>
+            </div>
+
+            <div id="receipt-slot">
+                <div id="receipt-output" class="receipt-output hidden">
+                    <div class="paper-receipt">
+                        <h3>ФІСКАЛЬНИЙ ЧЕК</h3>
+                        <div class="receipt-date" id="receipt-date">--/--/---- --:--</div>
+                        <hr class="dashed">
+                        <div id="receipt-body"> </div>
+                        <hr class="dashed">
+                        <div class="receipt-footer"><p>Дякуємо за покупку!</p></div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

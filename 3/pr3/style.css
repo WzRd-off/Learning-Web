@@ -1,0 +1,237 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.calculator-section {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+h2 {
+    color: #4CAF50;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+#display {
+    width: 100%;
+    height: 60px;
+    background-color: #e9ecef;
+    border: none;
+    border-radius: 10px;
+    text-align: right;
+    padding: 10px 15px;
+    font-size: 2em;
+    color: #333;
+    box-sizing: border-box;
+    font-weight: 700;
+}
+
+.buttons-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.btn {
+    padding: 20px;
+    font-size: 1.5em;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+    outline: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.number {
+    background-color: #f1f3f5;
+    color: #495057;
+}
+
+.number:hover {
+    background-color: #e2e4e6;
+}
+
+.operator,
+.equals,
+.clear,
+.backspace {
+    color: #fff;
+    font-weight: 700;
+}
+
+.operator {
+    background-color: #4CAF50;
+}
+
+.operator:hover {
+    background-color: #45a049;
+}
+
+.equals {
+    background-color: #007bff;
+    grid-column: span 1;
+}
+
+.equals:hover {
+    background-color: #0056b3;
+}
+
+.zero {
+    grid-column: span 1;
+}
+
+.container-matrix {
+    background-color: #e6f3ff;
+}
+
+.matrix-input-group {
+    display: flex;
+    justify-content: space-around;
+    gap: 15px;
+}
+
+.matrix-input textarea {
+    width: 90%;
+    height: 80px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1.2em;
+    resize: none;
+}
+
+.matrix-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.matrix-op {
+    padding: 15px 25px;
+    background-color: #007bff;
+    color: white;
+    font-size: 1.2em;
+}
+
+.matrix-result h3 {
+    margin-top: 20px;
+    color: #0056b3;
+}
+
+.matrix-result pre {
+    background-color: #d1e7fd;
+    padding: 15px;
+    border-radius: 8px;
+    white-space: pre-wrap;
+    text-align: left;
+    font-size: 1em;
+}
+
+.container-logic {
+    background-color: #fff8e1;
+}
+
+.logic-input-group {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.logic-input-group input {
+    width: 80px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+.logic-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.logic-op {
+    padding: 15px 25px;
+    background-color: #ff9800;
+    color: white;
+    font-size: 1.2em;
+}
+
+.logic-result h3 {
+    margin-top: 20px;
+    color: #e65100;
+}
+
+.logic-result span {
+    font-size: 2em;
+    font-weight: bold;
+    color: #e65100;
+}
+
+.buttons-grid.full-grid {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.scientific,
+.clearEntry,
+.clear,
+.backspace {
+    background-color: #555;
+    color: #fff;
+    font-size: 1.2em;
+}
+
+.scientific:hover,
+.clearEntry:hover,
+.clear:hover,
+.backspace:hover {
+    background-color: #666;
+}
+
+
+summary {
+    cursor: pointer;
+    padding: 10px;
+    background-color: #f1f1f1;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    transition: background-color 0.3s;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+summary:hover {
+    background-color: #ddd;
+}

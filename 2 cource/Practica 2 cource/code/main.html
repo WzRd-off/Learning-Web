@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Одеські Заклади - Відкрий гастрономічну Одесу</title>
+    <meta name="description"
+        content="Найкращі ресторани, кафе та бари Одеси. Знайди ідеальний заклад для будь-якого настрою!">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #F5F5F5;
+            color: #333333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 15px 0;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: #D87D4A;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo::before {
+            content: "🍽️";
+            margin-right: 10px;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #333333;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #D87D4A;
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        .search-input {
+            padding: 12px 20px;
+            border: 2px solid #E8ECEF;
+            border-radius: 25px;
+            width: 300px;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .search-input:focus {
+            border-color: #A3D9B1;
+        }
+
+        .search-suggestions {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s;
+            z-index: 10;
+        }
+
+        .search-suggestions.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .suggestion-item {
+            padding: 12px 20px;
+            cursor: pointer;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .suggestion-item:hover {
+            background: #f8f8f8;
+        }
+
+        .burger-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .burger-line {
+            width: 25px;
+            height: 3px;
+            background: #333;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 600px;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 600"><rect fill="%23D87D4A" width="1920" height="600"/><circle fill="%23A3D9B1" cx="300" cy="150" r="80" opacity="0.3"/><circle fill="%232A3F5F" cx="1200" cy="400" r="120" opacity="0.2"/><rect fill="%23ffffff" x="800" y="200" width="200" height="100" rx="10" opacity="0.1"/></svg>');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s;
+        }
+
+        .hero-content p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s 0.3s both;
+        }
+
+        .hero-search {
+            display: flex;
+            gap: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+            animation: fadeInUp 1s 0.6s both;
+        }
+
+        .hero-search input {
+            flex: 1;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .cta-button {
+            background: #A3D9B1;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .cta-button:hover {
+            background: #8bc99e;
+            transform: scale(1.05);
+        }
+
+        /* Categories */
+        .categories {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 36px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #2A3F5F;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .category-card {
+            height: 200px;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #D87D4A, #A3D9B1);
+            opacity: 0.8;
+        }
+
+        .category-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        .category-name {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        /* Recommendations */
+        .recommendations {
+            padding: 80px 0;
+            background: #F5F5F5;
+        }
+
+        .places-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .place-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            animation: fadeInUp 0.6s;
+        }
+
+        .place-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .place-image {
+            height: 200px;
+            background: linear-gradient(45deg, #D87D4A, #A3D9B1);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: white;
+        }
+
+        .place-info {
+            padding: 20px;
+        }
+
+        .place-name {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #2A3F5F;
+        }
+
+        .place-type {
+            color: #D87D4A;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .place-rating {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .stars {
+            color: #FFD700;
+        }
+
+        .place-description {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .status {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .status.open {
+            background: #A3D9B1;
+            color: white;
+        }
+
+        .status.closed {
+            background: #ff6b6b;
+            color: white;
+        }
+
+        /* Footer */
+        .footer {
+            background: #2A3F5F;
+            color: white;
+            padding: 50px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #A3D9B1;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #E8ECEF;
+            text-decoration: none;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .footer-section a:hover {
+            color: #A3D9B1;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: #A3D9B1;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            transition: background 0.3s;
+        }
+
+        .social-link:hover {
+            background: #D87D4A;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #4a5a7a;
+            color: #E8ECEF;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .burger-menu {
+                display: flex;
+            }
+
+            .search-input {
+                width: 200px;
+            }
+
+            .hero-content h1 {
+                font-size: 32px;
+            }
+
+            .hero-search {
+                flex-direction: column;
+            }
+
+            .categories-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .places-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">Одеські Заклади</a>
+                <nav class="nav">
+                    <ul class="nav-menu" id="navMenu">
+                        <li><a href="catalog.html">Каталог закладів</a></li>
+                        <li><a href="about.html">Про нас</a></li>
+                        <li><a href="contacts.html">Контакти</a></li>
+                    </ul>
+                    <div class="search-box">
+                        <input type="text" class="search-input" placeholder="Пошук закладів..." id="searchInput">
+                        <div class="search-suggestions" id="searchSuggestions">
+                            <div class="suggestion-item">Італійська кухня</div>
+                            <div class="suggestion-item">Ресторани в центрі</div>
+                            <div class="suggestion-item">Кафе з терасою</div>
+                            <div class="suggestion-item">Доставка</div>
+                            <div class="suggestion-item">Бари Аркадії</div>
+                        </div>
+                    </div>
+                    <div class="burger-menu" id="burgerMenu">
+                        <div class="burger-line"></div>
+                        <div class="burger-line"></div>
+                        <div class="burger-line"></div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Відкрий гастрономічну Одесу</h1>
+            <p>Найкращі ресторани, кафе та бари міста у одному місці</p>
+            <div class="hero-search">
+                <input type="text" placeholder="Що шукаєш?">
+                <button class="cta-button">Знайти заклад</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="categories">
+        <div class="container">
+            <h2 class="section-title">Категорії закладів</h2>
+            <div class="categories-grid">
+                <div class="category-card" onclick="location.href='catalog.html?type=restaurants'">
+                    <div class="category-icon">🍽️</div>
+                    <div class="category-name">Ресторани</div>
+                </div>
+                <div class="category-card" onclick="location.href='catalog.html?type=cafes'">
+                    <div class="category-icon">☕</div>
+                    <div class="category-name">Кафе</div>
+                </div>
+                <div class="category-card" onclick="location.href='catalog.html?type=bars'">
+                    <div class="category-icon">🍺</div>
+                    <div class="category-name">Бари</div>
+                </div>
+                <div class="category-card" onclick="location.href='catalog.html?type=coffee'">
+                    <div class="category-icon">🌟</div>
+                    <div class="category-name">Кав'ярні</div>
+                </div>
+                <div class="category-card" onclick="location.href='catalog.html?type=clubs'">
+                    <div class="category-icon">🎵</div>
+                    <div class="category-name">Нічні клуби</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recommendations -->
+    <section class="recommendations">
+        <div class="container">
+            <h2 class="section-title">Популярні заклади</h2>
+            <div class="places-grid">
+                <div class="place-card" onclick="location.href='place.html?id=1'">
+                    <div class="place-image">
+                        🍝
+                        <div class="status open">Відкрито</div>
+                    </div>
+                    <div class="place-info">
+                        <h3 class="place-name">Famiglia</h3>
+                        <div class="place-type">Італійська кухня</div>
+                        <div class="place-rating">
+                            <span class="stars">★★★★★</span>
+                            <span>4.8</span>
+                        </div>
+                        <p class="place-description">Справжня італійська кухня в серці Одеси. Домашня паста та
+                            неперевершена піца.</p>
+                    </div>
+                </div>
+
+                <div class="place-card" onclick="location.href='place.html?id=2'">
+                    <div class="place-image">
+                        🍣
+                        <div class="status open">Відкрито</div>
+                    </div>
+                    <div class="place-info">
+                        <h3 class="place-name">Sakura</h3>
+                        <div class="place-type">Японська кухня</div>
+                        <div class="place-rating">
+                            <span class="stars">★★★★☆</span>
+                            <span>4.6</span>
+                        </div>
+                        <p class="place-description">Свіжі суші та роли від японського шеф-кухаря. Стильний інтер'єр та
+                            швидка подача.</p>
+                    </div>
+                </div>
+
+                <div class="place-card" onclick="location.href='place.html?id=3'">
+                    <div class="place-image">
+                        🌮
+                        <div class="status closed">Закрито</div>
+                    </div>
+                    <div class="place-info">
+                        <h3 class="place-name">Tacos & Co</h3>
+                        <div class="place-type">Мексиканська кухня</div>
+                        <div class="place-rating">
+                            <span class="stars">★★★★☆</span>
+                            <span>4.4</span>
+                        </div>
+                        <p class="place-description">Справжні мексиканські тако та буріто з найкращими інгредієнтами.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="place-card" onclick="location.href='place.html?id=4'">
+                    <div class="place-image">
+                        ☕
+                        <div class="status open">Відкрито</div>
+                    </div>
+                    <div class="place-info">
+                        <h3 class="place-name">Coffee Culture</h3>
+                        <div class="place-type">Кав'ярня</div>
+                        <div class="place-rating">
+                            <span class="stars">★★★★★</span>
+                            <span>4.9</span>
+                        </div>
+                        <p class="place-description">Авторська кава та домашня випічка. Ідеальне місце для роботи та
+                            зустрічей.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Контакти</h3>
+                    <p>📞 +38 (048) 123-45-67</p>
+                    <p>✉️ info@odesaplaces.com</p>
+                    <p>📍 вул. Дерибасівська, 1, Одеса</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Швидкі посилання</h3>
+                    <a href="catalog.html">Каталог закладів</a>
+                    <a href="about.html">Про нас</a>
+                    <a href="contacts.html">Контакти</a>
+                    <a href="privacy.html">Політика конфіденційності</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Категорії</h3>
+                    <a href="catalog.html?type=restaurants">Ресторани</a>
+                    <a href="catalog.html?type=cafes">Кафе</a>
+                    <a href="catalog.html?type=bars">Бари</a>
+                    <a href="catalog.html?type=coffee">Кав'ярні</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Слідкуй за нами</h3>
+                    <p>Залишайся в курсі новинок одеських закладів</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">📘</a>
+                        <a href="#" class="social-link">📸</a>
+                        <a href="#" class="social-link">📱</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Одеські Заклади. Всі права захищені.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Search functionality
+        const searchInput = document.getElementById('searchInput');
+        const searchSuggestions = document.getElementById('searchSuggestions');
+
+        searchInput.addEventListener('focus', () => {
+            searchSuggestions.classList.add('active');
+        });
+
+        searchInput.addEventListener('blur', () => {
+            setTimeout(() => {
+                searchSuggestions.classList.remove('active');
+            }, 200);
+        });
+
+        // Mobile menu
+        const burgerMenu = document.getElementById('burgerMenu');
+        const navMenu = document.getElementById('navMenu');
+
+        burgerMenu.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Smooth animations on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        // Observe place cards
+        document.querySelectorAll('.place-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Hero search functionality
+        document.querySelector('.cta-button').addEventListener('click', () => {
+            const searchTerm = document.querySelector('.hero-search input').value;
+            if (searchTerm) {
+                window.location.href = `catalog.html?search=${encodeURIComponent(searchTerm)}`;
+            } else {
+                window.location.href = 'catalog.html';
+            }
+        });
+
+        // Enter key for hero search
+        document.querySelector('.hero-search input').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                document.querySelector('.cta-button').click();
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тренувальні тести НМТ</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container">
+            <h1 class="logo">НМТ: Підготовка 2025</h1>
+            <nav class="main-nav">
+                <a href="index.html" class="nav-link">Конспекти</a>
+                <a href="tests.html" class="nav-link">Тести</a>
+                <a href="resources.html" class="nav-link">Ресурси</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <h2 class="page-title">Оберіть тест для перевірки знань</h2>
+            <p class="page-subtitle">Натисніть на предмет, щоб побачити доступні теми, а потім оберіть тест.</p>
+
+            <div class="test-selection-area">
+                <details class="subject-accordion">
+                    <summary class="subject-title">Математика</summary>
+                    <ul class="test-list">
+                        <li><a href="#" class="test-link" data-test-id="math-formulas">Тест: Формули скороченого множення</a></li>
+                    </ul>
+                </details>
+
+                <details class="subject-accordion">
+                    <summary class="subject-title">Українська мова</summary>
+                    <ul class="test-list">
+                        <li><a href="#" class="test-link" data-test-id="lang-accents">Тест: Наголоси</a></li>
+                    </ul>
+                </details>
+            </div>
+
+            <div id="test-display-area" class="test-display-area">
+                <p class="test-placeholder">Будь ласка, оберіть тест зі списку вище.</p>
+
+                <div id="math-formulas" class="test-block" hidden>
+                    <h3 class="test-title">Тест: Формули скороченого множення</h3>
+                    <div class="question">
+                        <p>1. Який вираз є квадратом суми (a + b)²?</p>
+                        <label><input type="radio" name="q1"> a² - 2ab + b²</label>
+                        <label data-correct="true"><input type="radio" name="q1"> a² + 2ab + b²</label>
+                        <label><input type="radio" name="q1"> a² + b²</label>
+                        <label><input type="radio" name="q1"> a² - b²</label>
+                    </div>
+                    <div class="question">
+                        <p>2. Розкрийте дужки у виразі (x - 3)².</p>
+                        <label><input type="radio" name="q2"> x² - 9</label>
+                        <label data-correct="true"><input type="radio" name="q2"> x² - 6x + 9</label>
+                        <label><input type="radio" name="q2"> x² + 6x + 9</label>
+                        <label><input type="radio" name="q2"> x² - 3x + 9</label>
+                    </div>
+                    <button class="check-test-btn">Перевірити відповіді</button>
+                </div>
+
+                <div id="lang-accents" class="test-block" hidden>
+                    <h3 class="test-title">Тест: Наголоси</h3>
+                    <div class="question">
+                        <p>1. У якому слові наголос падає на перший склад?</p>
+                        <label><input type="radio" name="q3"> випа́док</label>
+                        <label><input type="radio" name="q3"> катало́г</label>
+                        <label data-correct="true"><input type="radio" name="q3"> фо́льга</label>
+                        <label><input type="radio" name="q3"> асиметрі́я</label>
+                    </div>
+                    <div class="question">
+                        <p>2. У якому слові наголос падає на другий склад?</p>
+                        <label data-correct="true"><input type="radio" name="q4"> чита́ння</label>
+                        <label><input type="radio" name="q4"> до́нька</label>
+                        <label><input type="radio" name="q4"> за́вдання</label>
+                        <label><input type="radio" name="q4"> по́друга</label>
+                    </div>
+                    <button class="check-test-btn">Перевірити відповіді</button>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>Розроблено для підготовки до НМТ. © 2025</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

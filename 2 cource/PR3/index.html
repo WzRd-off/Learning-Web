@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Вінтон Серф - Блог</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+
+        }
+
+        p {
+            font-size: 20px;
+        }
+
+        article {
+            margin-bottom: 40px;
+        }
+
+        header {
+            background-color: #0073e6;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        ul#menu li {
+            color: #fff;
+            list-style: none;
+            margin-right: 15px;
+            display: inline;
+        }
+
+        ul#menu li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 18px;
+            padding: 10px 15px;
+        }
+
+        section {
+            background-color: white;
+            padding: 20px;
+            margin: 10px 0;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+        }
+
+        section#about {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .proj {
+            flex: 1;
+            min-width: 280px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 10px auto;
+        }
+
+        img#avatar {
+            border-radius: 5px;
+            height: 300px;
+            float: left;
+            margin-right: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid #ddd;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        button {
+            width: 100%;
+            background-color: transparent;
+            color: white;
+            border: 1px solid white;
+            padding: 10px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        footer {
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            margin-top: 20px;
+            border-radius: 5px;
+            padding: 40px;
+            text-align: left;
+            font-family: Arial, sans-serif;
+        }
+
+        aside {
+            background-color: white;
+            width: 20%;
+            padding: 10px;
+            margin-top: 20px;
+            border-radius: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <!--blog-->
+        <h1>Персональна сторінка Вінтона Серфа</h1>
+        <nav>
+            <ul id="menu">
+                <li>
+                    <a href="#about">Про мене</a>
+                </li>
+                <li>
+                    <a href="#projects">Мої проекти</a>
+                </li>
+                <li>
+                    <a href="#gallery">Галерея</a>
+                </li>
+                <li>
+                    <a href="#contact">Контакти</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!--side-->
+    <aside style="float: left;"><a href="https://www.google.ru/" style="text-decoration: none;" target="_blank"
+            rel="noopener noreferrer">Тут
+            може бути ваша реклама</a></aside>
+    <aside style="float: right;"><a href="https://www.google.ru/" style="text-decoration: none;" target="_blank"
+            rel="noopener noreferrer">Тут
+            може бути ваша
+            реклама</a></aside>
+
+    <!--main text-->
+    <main style="margin: 0 22%; padding: 10px;">
+        <section id="about">
+            <div>
+                <img id="avatar" src="image/avatar.jpg" alt="Vinton Cerf">
+                <h1>Про мене</h1>
+                <!--Bio-->
+                <p>Мене звати <strong>Вінтон Серф</strong>, і мене часто називають одним із "батьків Інтернету". Я є
+                    співавтором протоколу <strong>TCP/IP</strong>, що став основою сучасних мереж. З дитинства мене
+                    захоплювали математика та технології, що й визначило мій шлях у науці. Після здобуття ступеня
+                    бакалавра
+                    у <strong>1965 році</strong> в <em>Стенфордському університеті</em>, я продовжив навчання та у
+                    <strong>1970 році</strong> захистив докторську дисертацію в <em>Каліфорнійському університеті в
+                        Лос-Анджелесі (UCLA)</em>, де працював над першими мережевими протоколами.
+                </p>
+                <p>У <strong>1973 році</strong> я разом із Робертом Каном розробив концепцію TCP/IP, яка стала основою
+                    Інтернету. Це відкриття заклало фундамент сучасних технологій зв’язку. Протоколи <strong>TCP
+                        (Transmission Control Protocol)</strong> і <strong>IP (Internet Protocol)</strong> забезпечують
+                    надійну передачу даних між пристроями в мережі. <strong>TCP</strong> відповідає за розбиття
+                    інформації
+                    на пакети та їхню коректну доставку, а <strong>IP</strong> визначає маршрутизацію цих пакетів по
+                    глобальній мережі. Саме ці технології дозволяють нам сьогодні спілкуватися, передавати файли та
+                    переглядати вебсайти.</p>
+                <p>У <strong>1983 році</strong> TCP/IP був офіційно впроваджений у ARPANET, що означало початок
+                    Інтернету,
+                    яким ми його знаємо сьогодні. Протягом наступних десятиліть я працював над розвитком Інтернету, був
+                    співзасновником <em>Internet Society</em> у <strong>1992 році</strong> та приєднався до
+                    <em>Google</em>
+                    у <strong>2005 році</strong> на посаді віцепрезидента.
+                </p>
+                <p>За свою діяльність я отримав численні нагороди, серед яких <strong>Медаль Свободи</strong>, вручена
+                    мені
+                    <strong>у 2016 році</strong> президентом Бараком Обамою. Продовжуючи займатися інноваціями, я
+                    присвячую
+                    свій час питанням безпеки, відкритості та розвитку Інтернету для майбутніх поколінь.
+                </p>
+            </div>
+
+        </section>
+        <section id="projects" style="background-color: #f4f4f4; padding: 50px 20px;">
+            <h1 style="text-align: center; font-size: 2.5em; margin-bottom: 30px; color: #333;">Мої проекти</h1>
+            <div
+                style="max-width: 1200px; margin: auto; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px;">
+                <div class="proj">
+                    <article>
+                        <h2 style="color: #0073e6;">Розробка TCP/IP</h2>
+                        <p>Цей проєкт став основою сучасного Інтернету. У 1973 році Вінтон Серф разом із Робертом Каном
+                            розробив протоколи <strong>Transmission Control Protocol (TCP)</strong> та <strong>Internet
+                                Protocol (IP)</strong>. Вони дозволили передавати дані між комп’ютерами незалежно від
+                            їхньої
+                            архітектури. У 1983 році TCP/IP був впроваджений у <strong>ARPANET</strong>, що зробило
+                            можливим
+                            створення глобальної мережі Інтернет.</p>
+                        <p><strong>Період:</strong> 1973 – 1983</p>
+                    </article>
+                </div>
+                <div class="proj">
+                    <article>
+                        <h2 style="color: #0073e6;">Інтернет у космосі (Interplanetary Internet)</h2>
+                        <p>Один із найамбітніших проєктів Вінтона Серфа — створення <strong>міжпланетного
+                                Інтернету</strong>. У 1998 році він почав працювати з NASA над розробкою
+                            <strong>Delay-Tolerant Networking (DTN)</strong> — мережевого протоколу, що дозволяє
+                            передавати
+                            дані між планетами з великими затримками. Завдяки цій технології зв’язок між Землею, Марсом
+                            і
+                            іншими небесними тілами стає можливим.
+                        </p>
+                        <p><strong>Період:</strong> 1998 – сьогодні</p>
+                    </article>
+                </div>
+                <div class="proj">
+                    <article>
+                        <h2 style="color: #0073e6;">Internet Society (ISOC)</h2>
+                        <p>У 1992 році Вінтон Серф став співзасновником <strong>Internet Society (ISOC)</strong> —
+                            організації, яка займається розвитком, стандартизацією та захистом відкритого Інтернету.
+                            ISOC
+                            відіграє ключову роль у міжнародному управлінні мережею, підтримує ініціативи з кібербезпеки
+                            та
+                            цифрових прав користувачів.</p>
+                        <p><strong>Період:</strong> 1992 – сьогодні</p>
+                    </article>
+                </div>
+                <div class="proj">
+                    <article>
+                        <h2 style="color: #0073e6;">Internet Corporation for Assigned Names and Numbers (ICANN)</h2>
+                        <p>Серф працював головою правління <strong>ICANN</strong> — організації, яка керує доменними
+                            іменами
+                            та IP-адресами у світовому Інтернеті. Його робота допомогла створити прозору та ефективну
+                            систему розподілу доменних зон, що зробило Інтернет доступним для всіх.</p>
+                        <p><strong>Період:</strong> 1998 – 2007</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="gallery" style="background-color: #f4f4f4; padding: 50px 20px; text-align: center;">
+            <h2 style="font-size: 2.5em; color: #333; margin-bottom: 30px;">Галерея</h2>
+            <div
+                style="display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; max-width: 1200px; margin: auto;">
+                <figure
+                    style="background: white; padding: 15px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); max-width: 300px;">
+                    <img src="image/v_face.jfif" alt="Фейс Вінтона"
+                        style="width: 100%; height: 300px; object-fit: cover; border-radius: 10px;">
+                    <figcaption style="margin-top: 10px; font-size: 1.2em; color: #555;">Я серйозний.</figcaption>
+                </figure>
+                <figure
+                    style="background: white; padding: 15px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); max-width: 300px;">
+                    <img src="image/v_math.jfif" alt="Вінтон Математик"
+                        style="width: 100%; height: 300px; object-fit: cover; border-radius: 10px;">
+                    <figcaption style="margin-top: 10px; font-size: 1.2em; color: #555;">Математик</figcaption>
+                </figure>
+                <figure
+                    style="background: white; padding: 15px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); max-width: 300px;">
+                    <img src="image/v_google.png" alt="Вінтон у гугл"
+                        style="width: 100%; height: 300px; object-fit: cover; border-radius: 10px;">
+                    <figcaption style="margin-top: 10px; font-size: 1.2em; color: #555;">Працюю у Google</figcaption>
+                </figure>
+            </div>
+        </section>
+
+    </main>
+
+
+
+    <footer id="contact">
+        <div style="max-width: 1200px; margin: auto; display: flex; justify-content: space-between; flex-wrap: wrap;">
+
+            <div style="flex: 1; min-width: 250px; margin-right: 20px;">
+                <h2 style="color: white;">Підписка на блог</h2>
+                <form>
+                    <label for="email">Електронна пошта:</label>
+                    <input type="email" id="email" name="email" required placeholder="Введіть свою ел. пошту"
+                        style="width: 100%; padding: 10px; margin-top: 5px;">
+
+                    <label for="birthday">День народження:</label>
+                    <input type="text" id="birthday" name="birthday" required placeholder="MM/DD/YYYY"
+                        style="width: 100%; padding: 10px; margin-top: 5px;">
+
+                    <button type="submit">Підписатися</button>
+                </form>
+                <p style="font-size: 12px; margin-top: 10px;">Ця реєстрація призначена для споживачів з України.
+                    Зареєструвавшись, ваш
+                    інформація буде збиратися та використовуватися в Україні відповідно до наших <a href="#"
+                        target="_blank" rel="noopener noreferrer" style="color: white;">Умов
+                        Використання</a>.</p>
+            </div>
+
+
+            <div style="flex: 1; margin-left: 50px;">
+                <h2 style="color: white;">Зв'яжіться з нами</h2>
+                <form>
+                    <label for="name">Ім'я:</label>
+                    <input type="text" id="name" name="name" required maxlength="20" placeholder="Введіть ваше ім'я"
+                        style="width: 100%; padding: 10px; margin-top: 5px;">
+
+                    <label for="email">Електронна пошта:</label>
+                    <input type="email" id="contact-email" name="email" required placeholder="Введіть свою ел. пошту"
+                        style="width: 100%; padding: 10px; margin-top: 5px;">
+
+                    <label for="comments">Коментарі та запитання:</label>
+                    <textarea id="comments" name="comments" rows="3" required maxlength="200" placeholder="Комментар..."
+                        style="width: 100%; padding: 10px; margin-top: 5px;"></textarea>
+
+                    <label>Улюблений регіон подорожей:</label>
+                    <div style="margin-top: 5px;">
+                        <label><input type="radio" name="region" value="Азія" required> Азія</label>
+                        <label><input type="radio" name="region" value="Європа" required> Європа</label>
+                        <label><input type="radio" name="region" value="Америка" required> Америка</label>
+                    </div>
+
+                    <button type="submit">Надіслати</button>
+                </form>
+            </div>
+            <div style="flex: 1; margin-left: 100px;">
+                <h2>Рекомендації</h2>
+                <details>
+                    <summary>Як зробити Інтернет безпечнішим?</summary>
+                    <p style="font-size: 12px;">Використовуйте шифрування, дотримуйтесь принципів кібербезпеки та
+                        підтримуйте відкриті стандарти безпеки.</p>
+                </details>
+                <details style="margin-top: 20px;">
+                    <summary>Чому важливо розвивати Інтернет у віддалених регіонах?</summary>
+                    <p style="font-size: 12px;">Це сприяє освітньому, економічному та соціальному розвитку спільнот.</p>
+                </details>
+            </div>
+            <div style="flex: 1; margin-left: 50px;">
+                <h2>FAQ</h2>
+                <details>
+                    <summary>Який внесок Вінтон Серф зробив у розвиток Інтернету?</summary>
+                    <p style="font-size: 12px;">Він є одним з творців TCP/IP, що стало основою сучасного Інтернету.</p>
+                </details>
+                <details style="margin-top: 20px;">
+                    <summary>Що таке міжпланетний Інтернет?</summary>
+                    <p style="font-size: 12px;">Це технологія, що дозволяє передавати дані між планетами з урахуванням
+                        великих затримок.</p>
+                </details>
+            </div>
+        </div>
+    </footer>
+
+
+</body>
+
+
+</html>

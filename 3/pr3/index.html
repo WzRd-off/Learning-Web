@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Універсальний Калькулятор</h1>
+
+    <div class="calculator-section container-calc">
+        <details open>
+            <summary>Математичний калькулятор</summary>
+            <div class="collapsible-content">
+                <input type="text" id="display" readonly>
+                <div class="buttons-grid full-grid">
+                    <button class="btn scientific">%</button>
+                    <button class="btn clearEntry">CE</button>
+                    <button class="btn clear">C</button>
+                    <button class="btn backspace">⌫</button>
+
+                    <button class="btn scientific">¹/ₓ</button>
+                    <button class="btn scientific">x²</button>
+                    <button class="btn scientific">²√x</button>
+                    <button class="btn operator">/</button>
+
+                    <button class="btn number">7</button>
+                    <button class="btn number">8</button>
+                    <button class="btn number">9</button>
+                    <button class="btn operator">*</button>
+
+                    <button class="btn number">4</button>
+                    <button class="btn number">5</button>
+                    <button class="btn number">6</button>
+                    <button class="btn operator">-</button>
+
+                    <button class="btn number">1</button>
+                    <button class="btn number">2</button>
+                    <button class="btn number">3</button>
+                    <button class="btn operator">+</button>
+
+                    <button class="btn scientific">+/-</button>
+                    <button class="btn number">0</button>
+                    <button class="btn number dot">.</button>
+                    <button class="btn equals">=</button>
+                </div>
+            </div>
+        </details>
+    </div>
+
+    <hr>
+
+    <div class="calculator-section container-matrix">
+        <details>
+            <summary>Матричний калькулятор</summary>
+            <div class="collapsible-content">
+                <div class="matrix-input-group">
+                    <div class="matrix-input">
+                        <label>Матриця A:</label>
+                        <textarea id="matrixA" placeholder="1 2&#10;3 4"></textarea>
+                    </div>
+                    <div class="matrix-input">
+                        <label>Матриця B:</label>
+                        <textarea id="matrixB" placeholder="5 6&#10;7 8"></textarea>
+                    </div>
+                </div>
+                <div class="matrix-buttons">
+                    <button class="btn matrix-op" onclick="calculateMatrix('add')">+</button>
+                    <button class="btn matrix-op" onclick="calculateMatrix('subtract')">-</button>
+                    <button class="btn matrix-op" onclick="calculateMatrix('multiply')">*</button>
+                    <button class="btn matrix-op" onclick="calculateMatrix('transposeA')">A<sup>T</sup></button>
+                </div>
+                <div class="matrix-result">
+                    <h3>Результат:</h3>
+                    <pre id="matrixResult"></pre>
+                </div>
+            </div>
+        </details>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+
+</html>

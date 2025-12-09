@@ -1,0 +1,128 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 40px;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+div#test {
+    width: 800px;
+    height: auto;
+    background: #fff;
+    border-radius: 10px;
+    margin: 30px auto;
+    padding: 20px;
+}
+
+div#question {
+    margin-bottom: 20px;
+}
+
+div#header {
+    width: 800px;
+    height: 60px;
+    background-color: #282830;
+    color: #fff;
+    border-radius: 10px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div#btn {
+    width: 300px;
+    height: auto;
+    background: #fff;
+    border-radius: 10px;
+    margin: 30px auto;
+    padding: 20px;
+}
+
+button#sub {
+    background: #1dabb8;
+    border-radius: 0 5px 5px 0;
+    color: #fff;
+    margin: 0px;
+    padding: 12px 20px;
+}
+
+button#res {
+    background: #1dabb8;
+    border-radius: 5px 0 0 5px;
+    color: #fff;
+    float: left;
+    margin-left: 50px;
+    padding: 12px 20px;
+}
+
+div#answer {
+    width: 800px;
+    height: auto;
+    background: #fff;
+    border-radius: 10px;
+    margin: 30px auto;
+    padding: 20px;
+}
+
+div#form {
+    width: 400px;
+    height: 500px;
+    background: #fff;
+    border-radius: 10px;
+    margin: 10% auto;
+}
+
+.hh1 {
+    margin: 0;
+    background-color: #282830;
+    border-radius: 10px 10px 0 0;
+    color: #fff;
+    font-size: 20px;
+    padding: 20px;
+    text-align: center;
+}
+
+
+.reg_res {
+    background: #1dabb8;
+    border-radius: 5px 0 0 5px;
+    color: #fff;
+    float: left;
+    margin-left: 1px;
+    padding: 12px 20px;
+}
+
+div#profile {
+    width: 800px;
+    height: auto;
+    background: #fff;
+    border-radius: 10px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+div#test_btn {
+    width: 400px;
+    height: 90px;
+    background-color: #282830;
+    border-radius: 10px;
+    margin: 20px auto;
+}
+
+.prof_hh1 {
+    color: #2c3e50;
+}
+
+.info {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+button#test_btn {
+    font-size: 40px;
+    background: #1dabb8;
+    border-radius: 5px;
+    color: #fff;
+    padding: 20px 162px;
+}

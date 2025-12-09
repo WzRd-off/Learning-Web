@@ -1,0 +1,192 @@
+body {
+    background-color: #F3EFE9;
+    font-family: "Poiret One", sans-serif;
+    font-weight: 200;
+    font-style: normal;
+    background-image: url('img/coffee_seeds.jfif');
+    margin: 0;
+}
+
+hr {
+    background-color: #FEF8DB;
+    width: 85%;
+}
+
+
+/* HEADER */
+
+header {
+    background: #73503C;
+    justify-content: center;
+    color: #FEF8DB;
+    min-height: 300px;
+    margin-bottom: 10px;
+}
+
+.top-bar {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.top-logo {
+    text-align: center;
+    font-family: "Emblema One", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 2em;
+    padding: 20px;
+}
+
+
+.top-bar nav {
+    margin-left: -4%;
+    padding: 35px 0;
+}
+
+.top-bar nav ul {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    gap: 120px;
+}
+
+
+.top-bar nav ul li a {
+    position: relative;
+    color: #FEF8DB;
+    text-decoration: none;
+    font-size: 2em;
+    font-weight: bold;
+    padding: 5px 10px;
+}
+
+.top-bar nav ul li a::after {
+    content: "";
+    left: 0;
+    position: absolute;
+    bottom: -2px;
+    width: 100%;
+    border-bottom: 2px solid;
+    transform: scaleX(0);
+    transition: transform 0.5s ease-in-out;
+}
+
+.top-bar nav ul li a:hover::after {
+    transform: scaleX(1);
+}
+
+.bar-block {
+    text-align: center;
+    width: 200px;
+}
+
+/* MAIN */
+main {
+    margin: 0 auto;
+    width: 75%;
+    margin-bottom: 10px;
+    color: #72594c;
+    background-color: #E1D8C7;
+    border-radius: 5px;
+    min-height: 500px;
+    padding: 20px;
+}
+
+.container {
+    display: flex;
+}
+
+.image {
+    margin-left: 100px;
+}
+
+.image img {
+    max-height: 505px;
+    width: 700px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    font-size: 3em;
+}
+
+p {
+    font-size: 2em;
+}
+
+/* FOOTER */
+
+footer {
+    background: #73503C;
+    color: #FEF8DB;
+    padding: 20px;
+}
+
+
+.footer-container {
+    display: flex;
+    font-size: 1.4em;
+}
+
+.bottom-bar {
+    flex: 1;
+    width: 60%;
+}
+
+.bottom-bar nav {
+    margin-left: 10%;
+    padding: 15px 0;
+}
+
+.bottom-bar nav ul {
+    display: flex;
+    list-style: none;
+    gap: 220px;
+}
+
+
+.bottom-bar nav ul li a {
+    position: relative;
+    color: #FEF8DB;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 10px;
+}
+
+.bottom-bar nav ul li a::after {
+    content: "";
+    left: 0;
+    position: absolute;
+    bottom: -2px;
+    width: 100%;
+    border-bottom: 2px solid;
+    transform: scaleX(0);
+    transition: transform 0.5s ease-in-out;
+}
+
+.bottom-bar nav ul li a:hover::after {
+    transform: scaleX(1);
+}
+
+.adress {
+    width: 30%;
+    flex: -1;
+}
+
+.adress p {
+    font-size: 1.3em;
+}
+
+.bottom-logo {
+    text-align: center;
+    font-family: "Emblema One", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    padding: 50px 0 20px 0;
+    font-size: 1em;
+}
+
+* {
+    box-sizing: border-box;
+}

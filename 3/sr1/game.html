@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Космічна подорож - Квест</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="stars" id="stars"></div>
+
+    <div class="container">
+        <div class="header">
+            <h1>🚀 КОСМІЧНА ПОДОРОЖ 🚀</h1>
+            <p>Квест цифрового космонавта</p>
+        </div>
+
+        <!-- Локація 1: Підготовка до старту -->
+        <div class="location active" id="location1">
+            <div class="mission-panel">
+                <h2>🛸 Локація 1: Крипто-Стартовий Комплекс</h2>
+                <p><strong>Місія:</strong> Ваш корабель потребує розрахунку необхідного палива для міжпланетної
+                    подорожі. Комп'ютер видав три критичні параметри.</p>
+
+                <div id="fuel-params" class="status-display">
+                    <!-- Параметри будуть згенеровані JS -->
+                </div>
+
+                <div class="input-group">
+                    <label for="fuel-calc">Введіть розрахунок палива (A * B) - C:</label>
+                    <input type="number" id="fuel-calc" placeholder="Ваш розрахунок...">
+                </div>
+
+                <button class="btn" onclick="checkFuelCalculation()">🔥 Запустити двигуни</button>
+
+                <div id="fuel-result" class="status-display" style="display: none;"></div>
+            </div>
+        </div>
+
+        <!-- Локація 2: Вибір маршруту -->
+        <div class="location" id="location2">
+            <div class="mission-panel">
+                <h2>🌌 Локація 2: Навігаційний Центр</h2>
+                <p><strong>Місія:</strong> Необхідно вибрати планету призначення та перевірити умови для безпечної
+                    подорожі.</p>
+
+                <div class="planet-selector">
+                    <div class="planet-card" onclick="selectPlanet('mars', 225, 9)">
+                        <h3>🔴 Марс</h3>
+                        <p>Відстань: 225 млн км</p>
+                        <p>Мінімальна швидкість: 9 км/с</p>
+                    </div>
+                    <div class="planet-card" onclick="selectPlanet('jupiter', 628, 15)">
+                        <h3>🟠 Юпітер</h3>
+                        <p>Відстань: 628 млн км</p>
+                        <p>Мінімальна швидкість: 15 км/с</p>
+                    </div>
+                    <div class="planet-card" onclick="selectPlanet('saturn', 1275, 18)">
+                        <h3>🪐 Сатурн</h3>
+                        <p>Відстань: 1275 млн км</p>
+                        <p>Мінімальна швидкість: 18 км/с</p>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="ship-speed">Швидкість корабля (км/с):</label>
+                    <input type="number" id="ship-speed" min="5" max="25" value="12">
+                </div>
+
+                <div class="input-group">
+                    <label for="current-time">Поточний час (години 0-23):</label>
+                    <input type="number" id="current-time" min="0" max="23" value="12">
+                </div>
+
+                <div class="input-group">
+                    <label for="energy-level">Рівень енергії корабля (%):</label>
+                    <input type="number" id="energy-level" min="0" max="100" value="85">
+                </div>
+
+                <button class="btn" onclick="checkFlightConditions()">🛰️ Перевірити умови польоту</button>
+
+                <div id="flight-result" class="status-display" style="display: none;"></div>
+                <div id="flight-console" class="console" style="display: none;"></div>
+            </div>
+        </div>
+
+        <!-- Локація 3: Аналіз сигналів -->
+        <div class="location" id="location3">
+            <div class="mission-panel">
+                <h2>📡 Локація 3: Центр Космічних Комунікацій</h2>
+                <p><strong>Місія:</strong> Під час польоту ви отримали два сигнали. Один від надійного супутника, інший
+                    - невідомого походження.</p>
+
+                <div class="status-display">
+                    <h4>📡 Сигнал від Надійного Супутника:</h4>
+                    <p id="reliable-signal">Статус: АКТИВНИЙ</p>
+                </div>
+
+                <div class="status-display warning">
+                    <h4>❓ Невідомий Сигнал:</h4>
+                    <p id="unknown-signal">Статус: НЕВИЗНАЧЕНИЙ</p>
+                </div>
+
+                <div class="input-group">
+                    <label>Дія з невідомим сигналом:</label>
+                    <select id="signal-action">
+                        <option value="">Виберіть дію...</option>
+                        <option value="trust">Довіряти сигналу</option>
+                        <option value="ignore">Ігнорувати сигнал</option>
+                        <option value="analyze">Детальний аналіз</option>
+                    </select>
+                </div>
+
+                <button class="btn" onclick="analyzeSignals()">🔍 Проаналізувати сигнали</button>
+
+                <div id="signal-result" class="status-display" style="display: none;"></div>
+            </div>
+        </div>
+
+        <!-- Фінальна локація: Аварійна ситуація -->
+        <div class="location" id="location4">
+            <div class="mission-panel bomb-interface">
+                <h2>💥 КРИТИЧНА СИТУАЦІЯ 💥</h2>
+                <p><strong>УВАГА:</strong> Виявлено несправність в енергетичній системі! Необхідно термінво деактивувати
+                    перевантаження!</p>
+
+                <div class="countdown" id="countdown">60</div>
+
+                <div class="status-display error">
+                    <p>На основі даних з попередніх локацій визначте правильний дріт для деактивації:</p>
+                    <ul style="text-align: left; margin-top: 10px;">
+                        <li>Червоний: якщо розрахунок палива був парним</li>
+                        <li>Синій: якщо швидкість корабля > 15 км/с</li>
+                        <li>Зелений: якщо енергія була > 80% АБО час 10-14</li>
+                        <li>Жовтий: якщо довіряли невідомому сигналу</li>
+                    </ul>
+                </div>
+
+                <div class="wire-container">
+                    <div class="wire red" onclick="cutWire('red')" title="Червоний дріт"></div>
+                    <div class="wire blue" onclick="cutWire('blue')" title="Синій дріт"></div>
+                    <div class="wire green" onclick="cutWire('green')" title="Зелений дріт"></div>
+                    <div class="wire yellow" onclick="cutWire('yellow')" title="Жовтий дріт"></div>
+                </div>
+
+                <div id="bomb-result" class="status-display" style="display: none;"></div>
+            </div>
+        </div>
+
+        <div class="mission-panel">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress" style="width: 25%;"></div>
+            </div>
+            <p style="text-align: center;">Прогрес місії: <span id="progress-text">1/4</span></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

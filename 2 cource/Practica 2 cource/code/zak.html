@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ресторан "Одеська Перлина" - Українська кухня в центрі Одеси</title>
+    <meta name="description"
+        content="Автентична українська кухня в серці Одеси. Сімейний ресторан з домашньою атмосферою та традиційними стравами.">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #F5F5F5;
+            color: #333333;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: #D87D4A;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333333;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #D87D4A;
+        }
+
+        .search-container {
+            position: relative;
+            width: 300px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 20px;
+            border: 2px solid #E8ECEF;
+            border-radius: 25px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #A3D9B1;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #333333;
+            cursor: pointer;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-top: 70px;
+            min-height: calc(100vh - 70px);
+        }
+
+        .restaurant-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400"><rect fill="%23D87D4A" width="1200" height="400"/><path fill="%23A3D9B1" opacity="0.3" d="M0,200 Q300,100 600,200 T1200,200 V400 H0 Z"/></svg>');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .restaurant-info {
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .restaurant-name {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .restaurant-subtitle {
+            font-size: 20px;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .rating-badge {
+            display: inline-flex;
+            align-items: center;
+            background-color: rgba(163, 217, 177, 0.9);
+            color: #2A3F5F;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-right: 15px;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            background-color: rgba(40, 167, 69, 0.9);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        .status-badge.closed {
+            background-color: rgba(220, 53, 69, 0.9);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            margin: 40px 0;
+        }
+
+        /* Photo Gallery */
+        .photo-gallery {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 24px;
+            font-weight: 600;
+            color: #2A3F5F;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .gallery-main {
+            position: relative;
+            margin-bottom: 15px;
+        }
+
+        .main-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .gallery-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.8);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .gallery-nav:hover {
+            background: white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery-nav.prev {
+            left: 15px;
+        }
+
+        .gallery-nav.next {
+            right: 15px;
+        }
+
+        .gallery-thumbnails {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+        }
+
+        .thumbnail {
+            width: 80px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+            opacity: 0.7;
+        }
+
+        .thumbnail.active,
+        .thumbnail:hover {
+            opacity: 1;
+            border: 2px solid #A3D9B1;
+        }
+
+        /* Restaurant Details */
+        .restaurant-details {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #E8ECEF;
+        }
+
+        .detail-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .detail-icon {
+            width: 24px;
+            height: 24px;
+            color: #D87D4A;
+            margin-top: 2px;
+        }
+
+        .detail-content h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: #2A3F5F;
+            margin-bottom: 5px;
+        }
+
+        .detail-content p {
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .working-hours {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5px;
+            font-size: 14px;
+        }
+
+        .working-hours .day {
+            font-weight: 600;
+        }
+
+        .working-hours .time {
+            text-align: right;
+            color: #666;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .info-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .contact-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .contact-btn.primary {
+            background-color: #A3D9B1;
+            color: #2A3F5F;
+        }
+
+        .contact-btn.primary:hover {
+            background-color: #8BC99F;
+            transform: translateY(-2px);
+        }
+
+        .contact-btn.secondary {
+            background-color: #E8ECEF;
+            color: #333;
+        }
+
+        .contact-btn.secondary:hover {
+            background-color: #D0D7DE;
+            transform: translateY(-2px);
+        }
+
+        .map-container {
+            height: 250px;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-top: 15px;
+        }
+
+        .map-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #A3D9B1, #D87D4A);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+
+        /* Reviews Section */
+        .reviews-section {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .reviews-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .reviews-stats {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .rating-score {
+            font-size: 32px;
+            font-weight: 700;
+            color: #D87D4A;
+        }
+
+        .rating-stars {
+            color: #FFD700;
+            font-size: 18px;
+        }
+
+        .reviews-count {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .add-review-btn {
+            background-color: #D87D4A;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .add-review-btn:hover {
+            background-color: #C66D39;
+            transform: translateY(-2px);
+        }
+
+        .review-item {
+            border-bottom: 1px solid #E8ECEF;
+            padding: 20px 0;
+        }
+
+        .review-item:last-child {
+            border-bottom: none;
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .reviewer-name {
+            font-weight: 600;
+            color: #2A3F5F;
+        }
+
+        .review-date {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .review-rating {
+            color: #FFD700;
+            margin-bottom: 8px;
+        }
+
+        .review-text {
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #2A3F5F;
+            color: white;
+            padding: 40px 0 20px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .footer-section h3 {
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 15px;
+            color: #A3D9B1;
+        }
+
+        .footer-section a {
+            color: #E8ECEF;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #A3D9B1;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(163, 217, 177, 0.2);
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: #A3D9B1;
+            color: #2A3F5F;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(163, 217, 177, 0.2);
+            padding-top: 20px;
+            margin-top: 30px;
+            text-align: center;
+            color: #E8ECEF;
+            font-size: 14px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+
+            .nav-links,
+            .search-container {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .restaurant-name {
+                font-size: 32px;
+            }
+
+            .restaurant-subtitle {
+                font-size: 16px;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .main-image {
+                height: 250px;
+            }
+
+            .working-hours {
+                grid-template-columns: 1fr;
+                gap: 2px;
+            }
+
+            .working-hours .time {
+                text-align: left;
+            }
+
+            .reviews-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-container {
+                padding: 0 15px;
+            }
+
+            .container {
+                padding: 0 15px;
+            }
+
+            .photo-gallery,
+            .restaurant-details,
+            .info-card,
+            .reviews-section {
+                padding: 20px;
+            }
+
+            .restaurant-header {
+                height: 300px;
+            }
+
+            .restaurant-name {
+                font-size: 24px;
+            }
+
+            .rating-badge,
+            .status-badge {
+                font-size: 12px;
+                padding: 6px 12px;
+            }
+        }
+
+        /* Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-title i {
+            color: #A3D9B1;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="/" class="logo">Одеські Заклади</a>
+            <ul class="nav-links">
+                <li><a href="/catalog">Каталог закладів</a></li>
+                <li><a href="/about">Про нас</a></li>
+                <li><a href="/contacts">Контакти</a></li>
+            </ul>
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Пошук закладів...">
+            </div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Restaurant Header -->
+        <section class="restaurant-header">
+            <div class="restaurant-info">
+                <h1 class="restaurant-name">Одеська Перлина</h1>
+                <p class="restaurant-subtitle">Автентична українська кухня в серці міста</p>
+                <div>
+                    <span class="rating-badge">
+                        <i class="fas fa-star"></i>
+                        4.8 (127 відгуків)
+                    </span>
+                    <span class="status-badge">
+                        <i class="fas fa-clock"></i>
+                        Відкрито
+                    </span>
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            <div class="content-grid">
+                <!-- Main Content -->
+                <div class="main-column">
+                    <!-- Photo Gallery -->
+                    <section class="photo-gallery fade-in">
+                        <h2 class="section-title">
+                            <i class="fas fa-images"></i>
+                            Фотогалерея
+                        </h2>
+                        <div class="gallery-main">
+                            <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400'><rect fill='%23D87D4A' width='800' height='400'/><g fill='%23A3D9B1' opacity='0.3'><circle cx='200' cy='150' r='60'/><circle cx='600' cy='250' r='80'/><rect x='300' y='100' width='200' height='100' rx='10'/></g><text x='400' y='210' text-anchor='middle' fill='white' font-size='24' font-weight='bold'>Інтер'єр ресторану</text></svg>"
+                                alt="Інтер'єр ресторану Одеська Перлина" class="main-image" id="mainImage">
+                            <button class="gallery-nav prev" onclick="previousImage()">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button class="gallery-nav next" onclick="nextImage()">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                        <div class="gallery-thumbnails">
+                            <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 60'><rect fill='%23D87D4A' width='80' height='60'/><text x='40' y='35' text-anchor='middle' fill='white' font-size='8'>Зал</text></svg>"
+                                alt="Основний зал" class="thumbnail active" onclick="changeImage(0)">
+                            <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 60'><rect fill='%23A3D9B1' width='80' height='60'/><text x='40' y='35' text-anchor='middle' fill='white' font-size='8'>Тераса</text></svg>"
+                                alt="Літня тераса" class="thumbnail" onclick="changeImage(1)">
+                            <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 60'><rect fill='%23E8ECEF' width='80' height='60'/><text x='40' y='35' text-anchor='middle' fill='%23333' font-size='8'>Борщ</text></svg>"
+                                alt="Український борщ" class="thumbnail" onclick="changeImage(2)">
+                            <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 60'><rect fill='%232A3F5F' width='80' height='60'/><text x='40' y='35' text-anchor='middle' fill='white' font-size='8'>Вареники</text></svg>"
+                                alt="Домашні вареники" class="thumbnail" onclick="changeImage(3)">
+                            <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 60'><rect fill='%23D87D4A' width='80' height='60'/><text x='40' y='35' text-anchor='middle' fill='white' font-size='7'>Десерти</text></svg>"
+                                alt="Домашні десерти" class="thumbnail" onclick="changeImage(4)">
+                        </div>
+                    </section>
+
+                    <!-- Restaurant Details -->
+                    <section class="restaurant-details fade-in">
+                        <h2 class="section-title">
+                            <i class="fas fa-info-circle"></i>
+                            Детальна інформація
+                        </h2>
+
+                        <div class="detail-item">
+                            <i class="fas fa-utensils detail-icon"></i>
+                            <div class="detail-content">
+                                <h4>Опис закладу</h4>
+                                <p>Сімейний ресторан української кухні з домашньою атмосферою. Готуємо за традиційними
+                                    рецептами з використанням свіжих місцевих продуктів. Спеціалізуємося на борщах,
+                                    варениках та м'ясних стравах. Є літня тераса та дитячий куточок.</p>
+                            </div>
+                        </div>
+
+                        <div class="detail-item">
+                            <i class="fas fa-clock detail-icon"></i>
+                            <div class="detail-content">
+                                <h4>Години роботи</h4>
+                                <div class="working-hours">
+                                    <span class="day">Понеділок</span>
+                                    <span class="time">10:00 - 22:00</span>
+                                    <span class="day">Вівторок</span>
+                                    <span class="time">10:00 - 22:00</span>
+                                    <span class="day">Середа</span>
+                                    <span class="time">10:00 - 22:00</span>
+                                    <span class="day">Четвер</span>
+                                    <span class="time">10:00 - 22:00</span>
+                                    <span class="day">П'ятниця</span>
+                                    <span class="time">10:00 - 23:00</span>
+                                    <span class="day">Субота</span>
+                                    <span class="time">10:00 - 23:00</span>
+                                    <span class="day">Неділя</span>
+                                    <span class="time">10:00 - 22:00</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="detail-item">
+                            <i class="fas fa-dollar-sign detail-icon"></i>
+                            <div class="detail-content">
+                                <h4>Середній чек</h4>
+                                <p>350-500 грн на особу</p>
+                            </div>
+                        </div>
+
+                        <div class="detail-item">
+                            <i class="fas fa-check-circle detail-icon"></i>
+                            <div class="detail-content">
+                                <h4>Особливості</h4>
+                                <p>Дитяча кімната • Літня тераса • Жива музика по вихідних • Безкоштовний Wi-Fi •
+                                    Парковка • Доставка</p>
+                            </div>
+                        </div>
+
+                        <div class="detail-item">
+                            <i class="fas fa-file-alt detail-icon"></i>
+                            <div class="detail-content">
+                                <h4>Меню</h4>
+                                <p>
+                                    <a href="#" style="color: #D87D4A; text-decoration: none; font-weight: 600;">
+                                        <i class="fas fa-download"></i> Завантажити меню (PDF)
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Reviews Section -->
+                    <section class="reviews-section fade-in">
+                        <div class="reviews-header">
+                            <div>
+                                <h2 class="section-title">
+                                    <i class="fas fa-star"></i>
+                                    Відгуки
+                                </h2>
+                                <div class="reviews-stats">
+                                    <span class="rating-score">4.8</span>
+                                    <div>
+                                        <div class="rating-stars">
+                                            ★★★★★
+                                        </div>
+                                        <div class="reviews-count">127 відгуків</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="add-review-btn">
+                                <i class="fas fa-plus"></i>
+                                Залишити відгук
+                            </button>
+                        </div>
+
+                        <div class="review-item">
+                            <div class="review-header">
+                                <span class="reviewer-name">Марія Коваленко</span>
+                                <span class="review-date">2 дні тому</span>
+                            </div>
+                            <div class="review-rating">★★★★★</div>
+                            <p class="review-text">Чудовий ресторан з автентичною українською кухнею! Борщ просто
+                                неймовірний, а вареники з картоплею нагадують дитинство. Обслуговування на високому
+                                рівні, персонал дуже привітний. Обов'язково повернемося!</p>
+                        </div>
+
+                        <div class="review-item">
+                            <div class="review-header">
+                                <span class="reviewer-name">Олександр Петренко</span>
+                                <span class="review-date">1 тиждень тому</span>
+                            </div>
+                            <div class="review-rating">★★★★☆</div>
+                            <p class="review-text">Гарна атмосфера, смачна їжа. Особливо сподобалися голубці та домашній
+                                хліб. Літня тераса дуже затишна. Єдиний мінус - довго чекали замовлення, але воно того
+                                варте.</p>
+                        </div>
+
+                        <div class="review-item">
+                            <div class="review-header">
+                                <span class="reviewer-name">Ірина Сидоренко</span>
+                                <span class="review-date">2 тижні тому</span>
+                            </div>
+                            <div class="review-rating">★★★★★</div>
+                            <p class="review-text">Відмінне місце для сімейного обіду! Діти в захваті від дитячого
+                                куточка, а дорослі - від кухні. Ціни адекватні, порції великі. Рекомендую всім, хто
+                                любить справжню українську кухню.</p>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Sidebar -->
+                <aside class="sidebar">
+                    <!-- Contact Info -->
+                    <div class="info-card fade-in">
+                        <h3 class="section-title">
+                            <i class="fas fa-phone"></i>
+                            Контакти
+                        </h3>
+                        <div class="detail-item">
+                            <i class="fas fa-map-marker-alt detail-icon"></i>
+                            <div class="detail-content">
+                                <h4>Адреса</h4>
+                                <p>вул. Дерибасівська, 15<br>Одеса, Україна</p>
+                            </div>
+                        </div>
+
+                        <div class="detail-item">
+                            <i class="fas fa-phone detail-icon"></i>
+                            <div class="detail-content">
+                                <h4>Телефон</h4>
+                                <p>+38 (048) 123-45-67</p>
+                            </div>
+                        </div>
+
+                        <div class="detail-item">
+                            <i class="fas fa-globe detail-icon"></i>
+                            <div class="detail-content">
+                                <h4>Веб-сайт</h4>
+                                <p><a href="#" style="color: #D87D4A;">odessa-perlina.com</a></p>
+                            </div>
+                        </div>
+
+                        <div class="contact-buttons">
+                            <a href="tel:+380481234567" class="contact-btn primary">
+                                <i class="fas fa-phone"></i>
+                                Зателефонувати
+                            </a>
+                            <a href="#" class="contact-btn secondary">
+                                <i class="fas fa-calendar-alt"></i>
+                                Забронювати столик
+                            </a>
+                            <a href="#" class="contact-btn secondary">
+                                <i class="fas fa-utensils"></i>
+                                Замовити доставку
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Map -->
+                    <div class="info-card fade-in">
+                        <h3 class="section-title">
+                            <i class="fas fa-map"></i>
+                            Розташування
+                        </h3>
+                        <div class="map-container">
+                            <div class="map-placeholder">
+                                <i class="fas fa-map-marker-alt" style="font-size: 24px;"></i>
+                                <span style="margin-left: 10px;">Інтерактивна карта</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social Media -->
+                    <div class="info-card fade-in">
+                        <h3 class="section-title">
+                            <i class="fas fa-share-alt"></i>
+                            Соціальні мережі
+                        </h3>
+                        <div class="social-links">
+                            <a href="#" aria-label="Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" aria-label="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" aria-label="Telegram">
+                                <i class="fab fa-telegram-plane"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Quick Info -->
+                    <div class="info-card fade-in">
+                        <h3 class="section-title">
+                            <i class="fas fa-info"></i>
+                            Швидка інформація
+                        </h3>
+                        <div class="detail-item">
+                            <i class="fas fa-tag detail-icon"></i>
+                            <div class="detail-content">
+                                <h4>Тип кухні</h4>
+                                <p>Українська</p>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-credit-card detail-icon"></i>
+                            <div class="detail-content">
+                                <h4>Оплата</h4>
+                                <p>Готівка, картка</p>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-wifi detail-icon"></i>
+                            <div class="detail-content">
+                                <h4>Wi-Fi</h4>
+                                <p>Безкоштовний</p>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Контакти</h3>
+                    <p>📞 +38 (048) 123-45-67</p>
+                    <p>✉️ info@odesaplaces.com</p>
+                    <p>📍 вул. Дерибасівська, 1, Одеса</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Швидкі посилання</h3>
+                    <a href="catalog.html">Каталог закладів</a>
+                    <a href="about.html">Про нас</a>
+                    <a href="contacts.html">Контакти</a>
+                    <a href="privacy.html">Політика конфіденційності</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Категорії</h3>
+                    <a href="catalog.html?type=restaurants">Ресторани</a>
+                    <a href="catalog.html?type=cafes">Кафе</a>
+                    <a href="catalog.html?type=bars">Бари</a>
+                    <a href="catalog.html?type=coffee">Кав'ярні</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Слідкуй за нами</h3>
+                    <p>Залишайся в курсі новинок одеських закладів</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">📘</a>
+                        <a href="#" class="social-link">📸</a>
+                        <a href="#" class="social-link">📱</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Одеські Заклади. Всі права захищені.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Gallery functionality
+        const images = [
+            {
+                src: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400'><rect fill='%23D87D4A' width='800' height='400'/><g fill='%23A3D9B1' opacity='0.3'><circle cx='200' cy='150' r='60'/><circle cx='600' cy='250' r='80'/><rect x='300' y='100' width='200' height='100' rx='10'/></g><text x='400' y='210' text-anchor='middle' fill='white' font-size='24' font-weight='bold'>Інтер'єр ресторану</text></svg>",
+                alt: "Інтер'єр ресторану Одеська Перлина"
+            },
+            {
+                src: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400'><rect fill='%23A3D9B1' width='800' height='400'/><g fill='%23D87D4A' opacity='0.4'><rect x='100' y='50' width='600' height='300' rx='20'/><circle cx='400' cy='200' r='50'/></g><text x='400' y='210' text-anchor='middle' fill='white' font-size='24' font-weight='bold'>Літня тераса</text></svg>",
+                alt: "Літня тераса"
+            },
+            {
+                src: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400'><rect fill='%23E8ECEF' width='800' height='400'/><g fill='%23D87D4A' opacity='0.6'><circle cx='400' cy='200' r='120'/><circle cx='400' cy='200' r='80'/></g><text x='400' y='210' text-anchor='middle' fill='%23333' font-size='24' font-weight='bold'>Український борщ</text></svg>",
+                alt: "Український борщ"
+            },
+            {
+                src: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400'><rect fill='%232A3F5F' width='800' height='400'/><g fill='%23A3D9B1' opacity='0.5'><ellipse cx='200' cy='200' rx='60' ry='40'/><ellipse cx='400' cy='200' rx='60' ry='40'/><ellipse cx='600' cy='200' rx='60' ry='40'/></g><text x='400' y='210' text-anchor='middle' fill='white' font-size='24' font-weight='bold'>Домашні вареники</text></svg>",
+                alt: "Домашні вареники"
+            },
+            {
+                src: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400'><rect fill='%23D87D4A' width='800' height='400'/><g fill='%232A3F5F' opacity='0.3'><rect x='150' y='150' width='150' height='100' rx='15'/><rect x='350' y='150' width='150' height='100' rx='15'/><rect x='550' y='150' width='150' height='100' rx='15'/></g><text x='400' y='210' text-anchor='middle' fill='white' font-size='24' font-weight='bold'>Домашні десерти</text></svg>",
+                alt: "Домашні десерти"
+            }
+        ];
+
+        let currentImageIndex = 0;
+
+        function changeImage(index) {
+            currentImageIndex = index;
+            const mainImage = document.getElementById('mainImage');
+            mainImage.src = images[index].src;
+            mainImage.alt = images[index].alt;
+
+            // Update active thumbnail
+            document.querySelectorAll('.thumbnail').forEach((thumb, i) => {
+                thumb.classList.toggle('active', i === index);
+            });
+        }
+
+        function nextImage() {
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+            changeImage(currentImageIndex);
+        }
+
+        function previousImage() {
+            currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+            changeImage(currentImageIndex);
+        }
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationDelay = '0.2s';
+                    entry.target.classList.add('fade-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Mobile menu functionality (placeholder)
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function () {
+            // Mobile menu toggle logic would go here
+            console.log('Mobile menu clicked');
+        });
+
+        // Search functionality (placeholder)
+        document.querySelector('.search-input').addEventListener('focus', function () {
+            // Search suggestions logic would go here
+            console.log('Search focused');
+        });
+    </script>
+</body>
+
+</html>

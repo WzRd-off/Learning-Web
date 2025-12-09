@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог закладів - Одеські Заклади</title>
+    <meta name="description"
+        content="Повний каталог ресторанів, кафе та барів Одеси з фільтрами за кухнею, районом та ціною">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #F5F5F5;
+            color: #333333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header - same as homepage */
+        .header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 15px 0;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: #D87D4A;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo::before {
+            content: "🍽️";
+            margin-right: 10px;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #333333;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: #D87D4A;
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        .search-input {
+            padding: 12px 20px;
+            border: 2px solid #E8ECEF;
+            border-radius: 25px;
+            width: 300px;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .search-input:focus {
+            border-color: #A3D9B1;
+        }
+
+        .burger-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .burger-line {
+            width: 25px;
+            height: 3px;
+            background: #333;
+            transition: 0.3s;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, #2A3F5F, #D87D4A);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .page-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .page-subtitle {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        /* Filters Section */
+        .filters-section {
+            background: white;
+            padding: 30px 0;
+            border-bottom: 1px solid #E8ECEF;
+        }
+
+        .filters-container {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .filter-label {
+            font-weight: 600;
+            color: #2A3F5F;
+            font-size: 14px;
+        }
+
+        .filter-select {
+            padding: 10px 15px;
+            border: 2px solid #E8ECEF;
+            border-radius: 8px;
+            background: white;
+            font-size: 14px;
+            cursor: pointer;
+            transition: border-color 0.3s;
+            min-width: 150px;
+        }
+
+        .filter-select:focus {
+            outline: none;
+            border-color: #A3D9B1;
+        }
+
+        .filter-toggle {
+            display: none;
+            background: #D87D4A;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .results-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .results-count {
+            color: #666;
+            font-size: 16px;
+        }
+
+        .sort-select {
+            padding: 8px 15px;
+            border: 2px solid #E8ECEF;
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+        }
+
+        /* Catalog Grid */
+        .catalog-section {
+            padding: 40px 0 80px;
+        }
+
+        .places-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .place-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            opacity: 0;
+            animation: fadeInUp 0.6s forwards;
+        }
+
+        .place-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .place-image {
+            height: 220px;
+            background: linear-gradient(45deg, #D87D4A, #A3D9B1);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: white;
+        }
+
+        .place-info {
+            padding: 25px;
+        }
+
+        .place-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .place-name {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 22px;
+            font-weight: 600;
+            color: #2A3F5F;
+            margin-bottom: 5px;
+        }
+
+        .place-type {
+            color: #D87D4A;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .place-rating {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .stars {
+            color: #FFD700;
+            font-size: 16px;
+        }
+
+        .rating-number {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .place-details {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .detail-icon {
+            width: 16px;
+            text-align: center;
+        }
+
+        .place-description {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .place-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            background: #E8ECEF;
+            color: #2A3F5F;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .status {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .status.open {
+            background: #A3D9B1;
+            color: white;
+        }
+
+        .status.closed {
+            background: #ff6b6b;
+            color: white;
+        }
+
+        .price-range {
+            background: #2A3F5F;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            position: absolute;
+            top: 15px;
+            left: 15px;
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 40px;
+        }
+
+        .page-btn {
+            padding: 10px 15px;
+            border: 2px solid #E8ECEF;
+            background: white;
+            color: #333;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .page-btn:hover,
+        .page-btn.active {
+            background: #D87D4A;
+            color: white;
+            border-color: #D87D4A;
+        }
+
+        /* Footer - same as homepage */
+        .footer {
+            background: #2A3F5F;
+            color: white;
+            padding: 50px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #A3D9B1;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #E8ECEF;
+            text-decoration: none;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .footer-section a:hover {
+            color: #A3D9B1;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: #A3D9B1;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            transition: background 0.3s;
+        }
+
+        .social-link:hover {
+            background: #D87D4A;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #4a5a7a;
+            color: #E8ECEF;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .burger-menu {
+                display: flex;
+            }
+
+            .search-input {
+                width: 200px;
+            }
+
+            .page-title {
+                font-size: 32px;
+            }
+
+            .filters-container {
+                display: none;
+                flex-direction: column;
+                background: white;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                margin-bottom: 20px;
+            }
+
+            .filters-container.active {
+                display: flex;
+            }
+
+            .filter-toggle {
+                display: block;
+            }
+
+            .places-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .results-info {
+                flex-direction: column;
+                gap: 15px;
+                align-items: flex-start;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .place-card {
+                margin: 0 -10px;
+            }
+
+            .places-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">Одеські Заклади</a>
+                <nav class="nav">
+                    <ul class="nav-menu" id="navMenu">
+                        <li><a href="catalog.html" class="active">Каталог закладів</a></li>
+                        <li><a href="about.html">Про нас</a></li>
+                        <li><a href="contacts.html">Контакти</a></li>
+                    </ul>
+                    <div class="search-box">
+                        <input type="text" class="search-input" placeholder="Пошук закладів..." id="searchInput">
+                    </div>
+                    <div class="burger-menu" id="burgerMenu">
+                        <div class="burger-line"></div>
+                        <div class="burger-line"></div>
+                        <div class="burger-line"></div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">Каталог закладів</h1>
+            <p class="page-subtitle">Знайди ідеальне місце для будь-якого настрою</p>
+        </div>
+    </section>
+
+    <!-- Filters -->
+    <section class="filters-section">
+        <div class="container">
+            <button class="filter-toggle" id="filterToggle">🔍 Фільтри</button>
+            <div class="filters-container" id="filtersContainer">
+                <div class="filter-group">
+                    <label class="filter-label">Тип кухні</label>
+                    <select class="filter-select" id="cuisineFilter">
+                        <option value="">Всі кухні</option>
+                        <option value="ukrainian">Українська</option>
+                        <option value="italian">Італійська</option>
+                        <option value="japanese">Японська</option>
+                        <option value="asian">Азіатська</option>
+                        <option value="european">Європейська</option>
+                        <option value="mexican">Мексиканська</option>
+                        <option value="american">Американська</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label class="filter-label">Район</label>
+                    <select class="filter-select" id="districtFilter">
+                        <option value="">Всі райони</option>
+                        <option value="center">Центр</option>
+                        <option value="tairova">Таїрова</option>
+                        <option value="cheremushki">Черемушки</option>
+                        <option value="arkadia">Аркадія</option>
+                        <option value="fontan">Фонтан</option>
+                        <option value="moldavanka">Молдаванка</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label class="filter-label">Середній чек</label>
+                    <select class="filter-select" id="priceFilter">
+                        <option value="">Всі ціни</option>
+                        <option value="low">До 200 грн</option>
+                        <option value="medium">200-500 грн</option>
+                        <option value="high">500+ грн</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label class="filter-label">Особливості</label>
+                    <select class="filter-select" id="featuresFilter">
+                        <option value="">Всі особливості</option>
+                        <option value="kids">Дитяча кімната</option>
+                        <option value="terrace">Тераса</option>
+                        <option value="music">Жива музика</option>
+                        <option value="delivery">Доставка</option>
+                        <option value="wifi">Wi-Fi</option>
+                        <option value="parking">Парковка</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catalog -->
+    <section class="catalog-section">
+        <div class="container">
+            <div class="results-info">
+                <div class="results-count">Знайдено <strong>24</strong> заклади</div>
+                <select class="sort-select" id="sortSelect">
+                    <option value="rating">За рейтингом</option>
+                    <option value="name">За назвою</option>
+                    <option value="price">За ціною</option>
+                    <option value="distance">За відстанню</option>
+                </select>
+            </div>
+
+            <div class="places-grid" id="placesGrid">
+                <!-- Restaurant cards will be populated by JavaScript -->
+            </div>
+
+            <div class="pagination">
+                <a href="#" class="page-btn">← Попередня</a>
+                <a href="#" class="page-btn active">1</a>
+                <a href="#" class="page-btn">2</a>
+                <a href="#" class="page-btn">3</a>
+                <a href="#" class="page-btn">Наступна →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Контакти</h3>
+                    <p>📞 +38 (048) 123-45-67</p>
+                    <p>✉️ info@odesaplaces.com</p>
+                    <p>📍 вул. Дерибасівська, 1, Одеса</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Швидкі посилання</h3>
+                    <a href="catalog.html">Каталог закладів</a>
+                    <a href="about.html">Про нас</a>
+                    <a href="contacts.html">Контакти</a>
+                    <a href="privacy.html">Політика конфіденційності</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Категорії</h3>
+                    <a href="catalog.html?type=restaurants">Ресторани</a>
+                    <a href="catalog.html?type=cafes">Кафе</a>
+                    <a href="catalog.html?type=bars">Бари</a>
+                    <a href="catalog.html?type=coffee">Кав'ярні</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Слідкуй за нами</h3>
+                    <p>Залишайся в курсі новинок одеських закладів</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">📘</a>
+                        <a href="#" class="social-link">📸</a>
+                        <a href="#" class="social-link">📱</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Одеські Заклади. Всі права захищені.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Sample data for restaurants
+        const restaurants = [
+            {
+                id: 1,
+                name: "Famiglia",
+                type: "Італійська кухня",
+                cuisine: "italian",
+                district: "center",
+                price: "medium",
+                rating: 4.8,
+                address: "вул. Дерибасівська, 15",
+                status: "open",
+                description: "Справжня італійська кухня в серці Одеси. Домашня паста та неперевершена піца з печі.",
+                features: ["terrace", "wifi", "parking"],
+                tags: ["Паста", "Піца", "Вино"],
+                emoji: "🍝",
+                priceRange: "200-500₴"
+            },
+            {
+                id: 2,
+                name: "Sakura",
+                type: "Японська кухня",
+                cuisine: "japanese",
+                district: "arkadia",
+                price: "high",
+                rating: 4.6,
+                address: "вул. Генуезька, 5",
+                status: "open",
+                description: "Свіжі суші та роли від японського шеф-кухаря. Стильний інтер'єр та швидка подача.",
+                features: ["delivery", "wifi"],
+                tags: ["Суші", "Роли", "Саке"],
+                emoji: "🍣",
+                priceRange: "500+₴"
+            },
+            {
+                id: 3,
+                name: "Tacos & Co",
+                type: "Мексиканська кухня",
+                cuisine: "mexican",
+                district: "center",
+                price: "medium",
+                rating: 4.4,
+                address: "вул. Пушкінська, 22",
+                status: "closed",
+                description: "Справжні мексиканські тако та буріто з найкращими інгредієнтами.",
+                features: ["delivery", "terrace"],
+                tags: ["Тако", "Буріто", "Текіла"],
+                emoji: "🌮",
+                priceRange: "200-500₴"
+            },
+            {
+                id: 4,
+                name: "Coffee Culture",
+                type: "Кав'ярня",
+                cuisine: "coffee",
+                district: "center",
+                price: "low",
+                rating: 4.9,
+                address: "вул. Ланжеронівська, 8",
+                status: "open",
+                description: "Авторська кава та домашня випічка. Ідеальне місце для роботи та зустрічей.",
+                features: ["wifi", "music"],
+                tags: ["Кава", "Десерти", "Wi-Fi"],
+                emoji: "☕",
+                priceRange: "До 200₴"
+            },
+            {
+                id: 5,
+                name: "Borscht & Salo",
+                type: "Українська кухня",
+                cuisine: "ukrainian",
+                district: "moldavanka",
+                price: "medium",
+                rating: 4.7,
+                address: "вул. Преображенська, 30",
+                status: "open",
+                description: "Традиційна українська кухня з сучасною подачею. Домашній борщ та вареники.",
+                features: ["kids", "parking", "music"],
+                tags: ["Борщ", "Вареники", "Сало"],
+                emoji: "🥟",
+                priceRange: "200-500₴"
+            },
+            {
+                id: 6,
+                name: "Burger House",
+                type: "Американська кухня",
+                cuisine: "american",
+                district: "tairova",
+                price: "medium",
+                rating: 4.3,
+                address: "вул. Академіка Заболотного, 15",
+                status: "open",
+                description: "Соковиті бургери та хрусткі картопля фрі. Американська класика в Одесі.",
+                features: ["delivery", "kids", "parking"],
+                tags: ["Бургери", "Картопля", "Коктейлі"],
+                emoji: "🍔",
+                priceRange: "200-500₴"
+            },
+            {
+                id: 7,
+                name: "Mediterranean",
+                type: "Європейська кухня",
+                cuisine: "european",
+                district: "fontan",
+                price: "high",
+                rating: 4.5,
+                address: "Фонтанська дорога, 45",
+                status: "open",
+                description: "Вишукана європейська кухня біля моря. Свіжі морепродукти та авторські страви.",
+                features: ["terrace", "parking", "wifi"],
+                tags: ["Морепродукти", "Стейки", "Вино"],
+                emoji: "🐟",
+                priceRange: "500+₴"
+            },
+            {
+                id: 8,
+                name: "Pho Saigon",
+                type: "Азіатська кухня",
+                cuisine: "asian",
+                district: "cheremushki",
+                price: "low",
+                rating: 4.2,
+                address: "пр. Добровольського, 80",
+                status: "closed",
+                description: "Автентичні в'єтнамські супи та азіатські страви за доступними цінами.",
+                features: ["delivery", "wifi"],
+                tags: ["Фо", "Лапша", "Том-ям"],
+                emoji: "🍜",
+                priceRange: "До 200₴"
+            }
+        ];
+
+        let filteredRestaurants = [...restaurants];
+        let currentPage = 1;
+        const itemsPerPage = 6;
+
+        // DOM elements
+        const placesGrid = document.getElementById('placesGrid');
+        const cuisineFilter = document.getElementById('cuisineFilter');
+        const districtFilter = document.getElementById('districtFilter');
+        const priceFilter = document.getElementById('priceFilter');
+        const featuresFilter = document.getElementById('featuresFilter');
+        const sortSelect = document.getElementById('sortSelect');
+        const searchInput = document.getElementById('searchInput');
+        const filterToggle = document.getElementById('filterToggle');
+        const filtersContainer = document.getElementById('filtersContainer');
+        const burgerMenu = document.getElementById('burgerMenu');
+        const navMenu = document.getElementById('navMenu');
+
+        // Render restaurants
+        function renderRestaurants() {
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            const paginatedRestaurants = filteredRestaurants.slice(startIndex, endIndex);
+
+            placesGrid.innerHTML = '';
+
+            paginatedRestaurants.forEach((restaurant, index) => {
+                const card = document.createElement('div');
+                card.className = 'place-card';
+                card.style.animationDelay = `${index * 0.1}s`;
+                card.onclick = () => window.location.href = `place.html?id=${restaurant.id}`;
+
+                const tagsHtml = restaurant.tags.map(tag => `<span class="tag">${tag}</span>`).join('');
+
+                card.innerHTML = `
+                    <div class="place-image">
+                        ${restaurant.emoji}
+                        <div class="status ${restaurant.status}">${restaurant.status === 'open' ? 'Відкрито' : 'Закрито'}</div>
+                        <div class="price-range">${restaurant.priceRange}</div>
+                    </div>
+                    <div class="place-info">
+                        <div class="place-header">
+                            <div>
+                                <h3 class="place-name">${restaurant.name}</h3>
+                                <div class="place-type">${restaurant.type}</div>
+                            </div>
+                        </div>
+                        <div class="place-rating">
+                            <span class="stars">${getStars(restaurant.rating)}</span>
+                            <span class="rating-number">${restaurant.rating}</span>
+                        </div>
+                        <div class="place-details">
+                            <div class="detail-item">
+                                <span class="detail-icon">📍</span>
+                                <span>${restaurant.address}</span>
+                            </div>
+                        </div>
+                        <p class="place-description">${restaurant.description}</p>
+                        <div class="place-tags">
+                            ${tagsHtml}
+                        </div>
+                    </div>
+                `;
+
+                placesGrid.appendChild(card);
+            });
+
+            // Update results count
+            document.querySelector('.results-count').innerHTML = `Знайдено <strong>${filteredRestaurants.length}</strong> ${getPlural(filteredRestaurants.length, 'заклад', 'заклади', 'закладів')}`;
+        }
+
+        // Get stars representation
+        function getStars(rating) {
+            const fullStars = Math.floor(rating);
+            const hasHalfStar = rating % 1 >= 0.5;
+            let stars = '★'.repeat(fullStars);
+            if (hasHalfStar) stars += '☆';
+            while (stars.length < 5) stars += '☆';
+            return stars;
+        }
+
+        // Get plural form
+        function getPlural(number, one, few, many) {
+            if (number % 10 === 1 && number % 100 !== 11) return one;
+            if (number % 10 >= 2 && number % 10 <= 4 && (number % 100 < 10 || number % 100 >= 20)) return few;
+            return many;
+        }
+
+        // Filter restaurants
+        function filterRestaurants() {
+            filteredRestaurants = restaurants.filter(restaurant => {
+                const matchesCuisine = !cuisineFilter.value || restaurant.cuisine === cuisineFilter.value;
+                const matchesDistrict = !districtFilter.value || restaurant.district === districtFilter.value;
+                const matchesPrice = !priceFilter.value || restaurant.price === priceFilter.value;
+                const matchesFeatures = !featuresFilter.value || restaurant.features.includes(featuresFilter.value);
+                const matchesSearch = !searchInput.value ||
+                    restaurant.name.toLowerCase().includes(searchInput.value.toLowerCase()) ||
+                    restaurant.type.toLowerCase().includes(searchInput.value.toLowerCase());
+
+                return matchesCuisine && matchesDistrict && matchesPrice && matchesFeatures && matchesSearch;
+            });
+
+            currentPage = 1;
+            sortRestaurants();
+        }
+
+        // Sort restaurants
+        function sortRestaurants() {
+            const sortBy = sortSelect.value;
+
+            filteredRestaurants.sort((a, b) => {
+                switch (sortBy) {
+                    case 'rating':
+                        return b.rating - a.rating;
+                    case 'name':
+                        return a.name.localeCompare(b.name);
+                    case 'price':
+                        const priceOrder = { 'low': 1, 'medium': 2, 'high': 3 };
+                        return priceOrder[a.price] - priceOrder[b.price];
+                    default:
+                        return 0;
+                }
+            });
+
+            renderRestaurants();
+        }
+
+        // Event listeners
+        cuisineFilter.addEventListener('change', filterRestaurants);
+        districtFilter.addEventListener('change', filterRestaurants);
+        priceFilter.addEventListener('change', filterRestaurants);
+        featuresFilter.addEventListener('change', filterRestaurants);
+        sortSelect.addEventListener('change', sortRestaurants);
+        searchInput.addEventListener('input', filterRestaurants);
+
+        // Mobile menu toggle
+        burgerMenu.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Mobile filter toggle
+        filterToggle.addEventListener('click', () => {
+            filtersContainer.classList.toggle('active');
+        });
+
+        // Initial render
+        renderRestaurants();
+
+        // Handle URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('type')) {
+            const typeMap = {
+                'restaurants': 'italian',
+                'cafes': 'coffee',
+                'bars': 'european',
+                'coffee': 'coffee',
+                'clubs': 'european'
+            };
+            cuisineFilter.value = typeMap[urlParams.get('type')] || '';
+            filterRestaurants();
+        }
+
+        if (urlParams.get('search')) {
+            searchInput.value = urlParams.get('search');
+            filterRestaurants();
+        }
+    </script>
+</body>
+
+</html>
