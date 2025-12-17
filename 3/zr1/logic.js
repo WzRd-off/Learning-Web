@@ -70,3 +70,40 @@ let houseState =
 let isNight = false;      
 let isArmed = false;      
 let outsideTemp = 10;    
+
+function updateTemperature(room) {
+    let tempChange = 0;
+    if (room.currentTemperature < room.targetTemperature) {
+        tempChange = 0.1;
+        room.heaterON = true;
+        room.acON = false;
+    }
+    else if (room.currentTemperature > room.targetTemperature) {
+        tempChange = -0.1;
+        room.heaterON = false;
+        room.acON = true;
+    }
+    else {
+        room.heaterON = false;
+        room.acON = false;
+    }
+    room.currentTemperature = parseFloat((room.currentTemperature + tempChange).toFixed(1));
+    updateRoomVisuals(room.id, room.currentTemperature);
+}
+
+function updateHumidity(room) {
+    let humidChange = 0;
+    if (room.currentHumidity < room.targetHumidity) {
+        humidChange = 1;
+        room.humidifierON = true;
+    }
+    else if (room.currentHumidity > room.targetHumidity) {
+        humidChange = -1;
+        room.humidifierON = false;
+    }
+    else {
+        room.humidifierON = false;
+    }   
+    room.currentHumidity = Math.min(100, Math.max(0, room.currentHumidity + humidChange));
+    updateRoomVisuals(room.id, room.currentHumidity);
+}
