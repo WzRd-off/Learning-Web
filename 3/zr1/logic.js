@@ -71,7 +71,7 @@ let isNight = false;
 let isArmed = false;      
 let outsideTemp = 10;    
 
-function updateTemperature(room) {
+function updateIndicators(room) {
     let tempChange = 0;
     if (room.currentTemperature < room.targetTemperature) {
         tempChange = 0.1;
@@ -88,10 +88,7 @@ function updateTemperature(room) {
         room.acON = false;
     }
     room.currentTemperature = parseFloat((room.currentTemperature + tempChange).toFixed(1));
-    updateRoomVisuals(room.id, room.currentTemperature);
-}
 
-function updateHumidity(room) {
     let humidChange = 0;
     if (room.currentHumidity < room.targetHumidity) {
         humidChange = 1;
@@ -105,5 +102,6 @@ function updateHumidity(room) {
         room.humidifierON = false;
     }   
     room.currentHumidity = Math.min(100, Math.max(0, room.currentHumidity + humidChange));
-    updateRoomVisuals(room.id, room.currentHumidity);
+    updateRoomVisuals(room.id, room.currentTemperature, room.currentHumidity);
 }
+

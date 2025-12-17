@@ -63,23 +63,30 @@ function selectRoom(roomId) {
 
 }
 
-function updateRoomVisuals(roomId, temp,humid) {
+function updateRoomVisuals(roomId, temp, humid) {
     const roomDiv = document.getElementById('room-' + roomId);
-    const iconSpan = roomDiv.querySelector('#temp');
-    
-    iconSpan.innerText = `🌡️ ${temp}°`;
+    const tempSpan = roomDiv.querySelector('#temp');
+    const humidSpan = roomDiv.querySelector('#humid');
+
+    tempSpan.innerText = `🌡️ ${temp}°`;
+    humidSpan.innerText = `💧 ${humid}%`;
+    selectRoom(activeRoomId);
 }
 
 function startSimulation() {
+    
+    const startBtn = document.getElementById('start-sim-btn');
+    startBtn.disabled = true;
+    startBtn.textContent = 'Симуляція...';
+
+    selectRoom("living");
 
     setInterval(() => {
         houseState.forEach(room => {
-            updateTemperature(room);
-            updateHumidity(room);
+           updateIndicators(room);
         });
     }, 1000);
 
 }
 
-selectRoom("living");
 
