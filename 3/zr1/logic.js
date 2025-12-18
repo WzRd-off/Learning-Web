@@ -70,6 +70,7 @@ let houseState =
 let isNight = false;      
 let isArmed = false;      
 let outsideTemp = 10;    
+let simulationTime = 0;
 
 function registerMotion(roomId) {
     const room = houseState.find(r => r.id === roomId);
@@ -80,6 +81,34 @@ function registerMotion(roomId) {
     }
 }
 
+function updateDayNightCycle() {
+    simulationTime++;
+    if (simulationTime % 20 === 0) {
+        isNight = !isNight;
+        if (isNight) {
+            houseGrid.style.backgroundColor = '#252530';
+            Select.value = 'night';
+            printLog("Автоматичне перемикання на нічний режим");
+        } else {
+            houseGrid.style.backgroundColor = '#fff5d7';
+            Select.value = 'day';
+            printLog("Автоматичне перемикання на денний режим");
+        }   
+    }
+}
+
+function updateOutsideTemp() {
+    let tempChange = 0;
+    const isUp = Math.round(Math.random());
+    if(isNight) {
+        tempChange = isUp ? 0.1 : -0.2;
+    }
+    else {
+        tempChange = isUp ? 0.2 : -0.1;
+    }
+    outsideTemp = parseFloat((outsideTemp + tempChange).toFixed(1));
+    outsideTempLabel.innerText = outsideTemp;
+}
 function updateIndicators(room) {
     let tempChange = 0;
     if (room.currentTemperature < room.targetTemperature) {
@@ -120,4 +149,3 @@ function updateIndicators(room) {
     room.currentHumidity = Math.min(100, Math.max(0, room.currentHumidity + humidChange));
     updateRoomVisuals(room.id, room.currentTemperature, room.currentHumidity);
 }
-

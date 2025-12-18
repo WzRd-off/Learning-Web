@@ -197,6 +197,8 @@ function startSimulation() {
            updateIndicators(room);
            checkStateChanges(room);
         });
+        updateDayNightCycle();
+        updateOutsideTemp();
     }, 1000);
 }
 
