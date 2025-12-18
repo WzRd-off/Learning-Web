@@ -71,6 +71,15 @@ let isNight = false;
 let isArmed = false;      
 let outsideTemp = 10;    
 
+function registerMotion(roomId) {
+    const room = houseState.find(r => r.id === roomId);
+    if (room) {
+        room.lastActivity = Date.now();      
+        if (isNight) 
+            room.ligthON = true;
+    }
+}
+
 function updateIndicators(room) {
     let tempChange = 0;
     if (room.currentTemperature < room.targetTemperature) {
@@ -100,7 +109,14 @@ function updateIndicators(room) {
     }
     else {
         room.humidifierON = false;
-    }   
+    }
+
+    if (room.ligthON) {
+        if (!isNight) 
+            room.ligthON = false;
+        if (Date.now() - room.lastActivity > 10000) 
+            room.ligthON = false;
+    }  
     room.currentHumidity = Math.min(100, Math.max(0, room.currentHumidity + humidChange));
     updateRoomVisuals(room.id, room.currentTemperature, room.currentHumidity);
 }

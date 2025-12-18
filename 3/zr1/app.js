@@ -8,6 +8,8 @@ const outsideTempLabel = document.getElementById('outside-temp-val');
 const detailRoomName = document.getElementById('detail-room-name');
 const detailTemp = document.getElementById('detail-temp');
 const detailHumidity = document.getElementById('detail-humidity');
+const houseGrid = document.getElementById('house-grid');
+const Select = document.getElementById('day-night-select');
 const roomElements = document.querySelectorAll('.room');
 
 let activeRoomId = 'living';
@@ -34,10 +36,24 @@ outsideTempSlider.addEventListener('input', function() {
     outsideTemp = Number(outsideTempSlider.value);
 });
 
+Select.addEventListener('input', function() {
+    if (Select.value == 'day') {
+        isNight = false;
+        houseGrid.style.backgroundColor = '#fff5d7';
+    }
+    else if (Select.value == 'night') {
+        isNight = true;
+        houseGrid.style.backgroundColor = '#252530';
+    }
+    else{
+        alert("Помиклка вибору часу");
+    }
+})
 
 roomElements.forEach(roomElem => {
     roomElem.addEventListener('click', function() {
         const cleanId = this.id.replace('room-', '');
+        registerMotion(cleanId);
         selectRoom(cleanId);
     });
 });
@@ -61,6 +77,37 @@ function selectRoom(roomId) {
     targetHumidSlider.value = roomData.targetHumidity;
     targetHumidLabel.innerText = roomData.targetHumidity;
 
+    updateDeviceStatus(roomData);
+}
+
+function updateDeviceStatus(roomData) {
+    const setStatus = (elementId, isActive) => {
+        const element = document.getElementById(elementId);
+        if (element) {
+            if (isActive) {
+                element.classList.add('active');
+                element.classList.remove('inactive');
+            } else {
+                element.classList.add('inactive');
+                element.classList.remove('active');
+            }
+        }
+    };
+
+    setStatus('dev-ac', roomData.acON);
+    setStatus('dev-heater', roomData.heaterON);
+    setStatus('dev-humid', roomData.humidifierON);
+    setStatus('dev-light', roomData.ligthON);
+}
+
+function updateRoomLigth(roomData) {
+    const room = document.getElementById('room-' + roomData.id)
+    if(roomData.ligthON) {
+        room.classList.add('ligth');
+    }
+    else {
+        room.classList.remove('ligth');
+    }
 }
 
 function updateRoomVisuals(roomId, temp, humid) {
@@ -68,9 +115,19 @@ function updateRoomVisuals(roomId, temp, humid) {
     const tempSpan = roomDiv.querySelector('#temp');
     const humidSpan = roomDiv.querySelector('#humid');
 
+    const roomData = houseState.find(r => r.id === roomId);
+    if (roomData) {
+        updateRoomLigth(roomData);
+        
+        if (activeRoomId === roomId) {
+             updateDeviceStatus(roomData); 
+        }
+    }
+
     tempSpan.innerText = `🌡️ ${temp}°`;
     humidSpan.innerText = `💧 ${humid}%`;
     selectRoom(activeRoomId);
+
 }
 
 function startSimulation() {
