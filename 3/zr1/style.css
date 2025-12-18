@@ -159,6 +159,7 @@ select, input[type="range"] {
 }
 
 .ligth {background-color: #fff5d7;}
+.ligth-font {color: #000;}
 
 #room-living { grid-column: 1 / 3; grid-row: 1 / 2; }
 #room-kitchen { grid-column: 3 / 4; grid-row: 1 / 2; }
