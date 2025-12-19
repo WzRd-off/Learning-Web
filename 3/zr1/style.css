@@ -59,6 +59,17 @@ body {
     gap: 15px;
     position: relative;
     border: 2px solid #333;
+    transition: background-color 0.5s ease;
+}
+
+@keyframes alarmFlash {
+    0% { background-color: #ff000050; border-color: red; }
+    50% { background-color: #252530; border-color: #333; }
+    100% { background-color: #ff000050; border-color: red; }
+}
+
+.house-plan.alarm-flash {
+    animation: alarmFlash 1s infinite;
 }
 
 .details {
@@ -88,6 +99,12 @@ h2 {
     margin-bottom: 10px;
     border-bottom: 1px solid #444;
     padding-bottom: 5px;
+}
+h4 {
+    margin-bottom: 5px;
+    color: #888;
+    font-size: 0.9rem;
+    text-transform: uppercase;
 }
 
 .control-group {
@@ -124,6 +141,13 @@ select, input[type="range"] {
 .btn.primary {
     background-color: var(--accent-blue);
 }
+.btn.active {
+    background-color: var(--accent-green);
+}
+.btn.alarm-active {
+    background-color: var(--accent-red);
+    animation: pulse 1s infinite;
+}
 
 .btn:hover {
     opacity: 0.9;
@@ -158,8 +182,8 @@ select, input[type="range"] {
     font-size: 0.9rem;
 }
 
-.ligth {background-color: #fff5d7;}
-.ligth-font {color: #000;}
+.ligth {background-color: #f1c40f;}
+.ligth-font {color: #000; font-weight: bold;}
 
 #room-living { grid-column: 1 / 3; grid-row: 1 / 2; }
 #room-kitchen { grid-column: 3 / 4; grid-row: 1 / 2; }
@@ -182,7 +206,7 @@ select, input[type="range"] {
     font-size: 1.2rem;
 }
 
-.devices-status {
+.devices-status, .special-devices-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
@@ -195,12 +219,16 @@ select, input[type="range"] {
     text-align: center;
     font-size: 0.8rem;
     border: 1px solid transparent;
+    transition: 0.2s;
 }
 
 .device-icon.active {
     border-color: var(--accent-green);
     color: var(--accent-green);
     background: #1e3a2a;
+}
+.device-icon.inactive {
+    color: #666;
 }
 
 .log-header {
@@ -222,6 +250,7 @@ select, input[type="range"] {
 .log-entry {
     margin-bottom: 4px;
 }
+
 
 @media (max-width: 1024px) {
     .container {

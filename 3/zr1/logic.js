@@ -2,7 +2,7 @@ let houseState =
 [
     {
         id: "living",
-        name: " Вітальня",
+        name: "Вітальня",
         currentTemperature: 22.0,
         currentHumidity: 45,
         targetTemperature: 23.0,
@@ -11,7 +11,11 @@ let houseState =
         heaterON: false,
         acON: false, 
         humidifierON: false,
-        lastActivity: 0
+        lastActivity: 0,
+        specialDevices: [
+            { id: 'tv', name: 'Smart TV 📺', active: false },
+            { id: 'audio', name: 'Аудіо 🎵', active: false }
+        ]
     },
     {
         id: "kitchen",
@@ -24,9 +28,13 @@ let houseState =
         heaterON: false,
         acON: false, 
         humidifierON: false,
-        lastActivity: 0
+        lastActivity: 0,
+        specialDevices: [
+            { id: 'coffee', name: 'Кавомашина ☕', active: false },
+            { id: 'fridge', name: 'Режим Super Freeze ❄️', active: false }
+        ]
     },
-        {
+    {
         id: "bedroom",
         name: "Спальня",
         currentTemperature: 24.0,
@@ -37,9 +45,12 @@ let houseState =
         heaterON: false,
         acON: false, 
         humidifierON: false,
-        lastActivity: 0
+        lastActivity: 0,
+        specialDevices: [
+            { id: 'blinds', name: 'Розумні Жалюзі 🪟', active: false }
+        ]
     },
-        {
+    {
         id: "bathroom",
         name: "Ванна",
         currentTemperature: 22.0,
@@ -50,9 +61,12 @@ let houseState =
         heaterON: false,
         acON: false, 
         humidifierON: false,
-        lastActivity: 0
+        lastActivity: 0,
+        specialDevices: [
+            { id: 'towel', name: 'Сушарка рушників 🧣', active: false }
+        ]
     },
-        {
+    {
         id: "hall",
         name: "Коридор",
         currentTemperature: 17.0,
@@ -63,16 +77,25 @@ let houseState =
         heaterON: false,
         acON: false, 
         humidifierON: false,
-        lastActivity: 0
+        lastActivity: 0,
+        specialDevices: []
     },
 ]
 
 let isNight = false;      
-let isArmed = false;      
+let isArmed = false; 
+let isAlarmTriggered = false;     
 let outsideTemp = 10;    
 let simulationTime = 0;
+let simulationMode = 'auto'; 
 
 function registerMotion(roomId) {
+    // Якщо увімкнена охорона - спрацьовує тривога
+    if (isArmed) {
+        isAlarmTriggered = true;
+        return; // Далі нічого не робимо, тривога блокує звичайну роботу
+    }
+
     const room = houseState.find(r => r.id === roomId);
     if (room) {
         room.lastActivity = Date.now();      
@@ -81,25 +104,37 @@ function registerMotion(roomId) {
     }
 }
 
+function toggleSpecialDevice(roomId, deviceId) {
+    const room = houseState.find(r => r.id === roomId);
+    if (room && room.specialDevices) {
+        const device = room.specialDevices.find(d => d.id === deviceId);
+        if (device) {
+            device.active = !device.active;
+            return device; // Повертаємо змінений девайс для логування
+        }
+    }
+    return null;
+}
+
 function updateDayNightCycle() {
     simulationTime++;
+    // Зміна дня і ночі кожні 20 "тіків" таймера
     if (simulationTime % 20 === 0) {
         isNight = !isNight;
-        if (isNight) {
-            houseGrid.style.backgroundColor = '#252530';
-            Select.value = 'night';
-            printLog("Автоматичне перемикання на нічний режим");
-        } else {
-            houseGrid.style.backgroundColor = '#fff5d7';
-            Select.value = 'day';
-            printLog("Автоматичне перемикання на денний режим");
-        }   
+        // Повертаємо об'єкт для обробки в app.js (щоб не лізти в DOM тут)
+        return { changed: true, isNight: isNight }; 
     }
+    return { changed: false };
 }
 
 function updateOutsideTemp() {
+    // Якщо режим ручний - температуру не міняємо програмно
+    if (simulationMode === 'manual') return;
+
     let tempChange = 0;
     const isUp = Math.round(Math.random());
+    
+    // Вночі холодніше, вдень тепліше
     if(isNight) {
         tempChange = isUp ? 0.1 : -0.2;
     }
@@ -107,18 +142,23 @@ function updateOutsideTemp() {
         tempChange = isUp ? 0.2 : -0.1;
     }
     outsideTemp = parseFloat((outsideTemp + tempChange).toFixed(1));
-    outsideTempLabel.innerText = outsideTemp;
 }
 
 function updateIndicators(room) {
+    // Температура
+    
     let tempChange = 0;
+
+    if (room.currentTemperature > outsideTemp) tempChange -= 0.02;
+    if (room.currentTemperature < outsideTemp) tempChange += 0.02;
+
     if (room.currentTemperature < room.targetTemperature) {
-        tempChange = 0.1;
+        tempChange += 0.1; 
         room.heaterON = true;
         room.acON = false;
     }
     else if (room.currentTemperature > room.targetTemperature) {
-        tempChange = -0.1;
+        tempChange -= 0.1; 
         room.heaterON = false;
         room.acON = true;
     }
@@ -128,6 +168,7 @@ function updateIndicators(room) {
     }
     room.currentTemperature = parseFloat((room.currentTemperature + tempChange).toFixed(1));
 
+    // Вологость
     let humidChange = 0;
     if (room.currentHumidity < room.targetHumidity) {
         humidChange = 1;
@@ -140,13 +181,16 @@ function updateIndicators(room) {
     else {
         room.humidifierON = false;
     }
+    room.currentHumidity = Math.min(100, Math.max(0, room.currentHumidity + humidChange));
 
+    // Світло
     if (room.ligthON) {
         if (!isNight) 
-            room.ligthON = false;
+            room.ligthON = false; // Вдень світло не потрібне
         if (Date.now() - room.lastActivity > 10000) 
-            room.ligthON = false;
+            room.ligthON = false; // Таймер 10 сек
     }  
-    room.currentHumidity = Math.min(100, Math.max(0, room.currentHumidity + humidChange));
+    
+    // Повертаємо дані для візуалізації
     updateRoomVisuals(room.id, room.currentTemperature, room.currentHumidity);
 }

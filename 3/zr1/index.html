@@ -12,6 +12,14 @@
             <h2>Налаштування</h2>
             
             <div class="control-group">
+                <label>Режим температури</label>
+                <select id="sim-mode-select">
+                    <option value="auto">Автономний 🤖</option>
+                    <option value="manual">Ручний 🖐️</option>
+                </select>
+            </div>
+
+            <div class="control-group">
                 <label>Режим "День/Ніч"</label>
                 <select id="day-night-select">
                     <option value="day">День ☀️</option>
@@ -21,7 +29,7 @@
 
             <div class="control-group">
                 <label>Температура надворі: <span id="outside-temp-val">10</span>°C</label>
-                <input type="range" id="outside-temp-slider" min="-10" max="35" value="10">
+                <input type="range" id="outside-temp-slider" min="-10" max="35" step="0.1" value="10">
             </div>
 
             <div class="control-group alarm-group">
@@ -99,11 +107,18 @@
                     <input type="range" id="target-humid-slider" min="30" max="80" step="5" value="50">
                 </div>
 
+                <!-- Блок для стандартних систем -->
+                <h4>Клімат та Світло</h4>
                 <div class="devices-status">
                     <div id="dev-ac" class="device-icon inactive">❄️ AC</div>
                     <div id="dev-heater" class="device-icon active">🔥 Heat</div>
                     <div id="dev-humid" class="device-icon inactive">💧 Humid</div>
                     <div id="dev-light" class="device-icon inactive">💡 Light</div>
+                </div>
+
+                <h4 style="margin-top: 15px;">Розумна техніка</h4>
+                <div id="special-devices-container" class="special-devices-grid">
+
                 </div>
             </div>
         </div>
@@ -111,8 +126,7 @@
         <div class="logs">
             <div class="log-header">Системний Лог</div>
             <div id="log-container">
-                <div class="log-entry">System: Симуляція запущена...</div>
-                <div class="log-entry">House: Усі системи в нормі.</div>
+                <div class="log-entry">System: Очікування запуску...</div>
             </div>
         </div>
     </div>
