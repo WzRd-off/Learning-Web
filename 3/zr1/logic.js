@@ -109,6 +109,7 @@ function updateOutsideTemp() {
     outsideTemp = parseFloat((outsideTemp + tempChange).toFixed(1));
     outsideTempLabel.innerText = outsideTemp;
 }
+
 function updateIndicators(room) {
     let tempChange = 0;
     if (room.currentTemperature < room.targetTemperature) {
