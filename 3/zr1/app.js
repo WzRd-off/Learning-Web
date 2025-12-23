@@ -200,6 +200,7 @@ function updateRoomVisuals(roomId, temp, humid) {
     if (activeRoomId === roomId) {
         detailTemp.innerText = temp;
         detailHumidity.innerText = humid;
+        updateDeviceStatus(roomData);
     }
 }
 

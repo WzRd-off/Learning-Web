@@ -93,7 +93,7 @@ function registerMotion(roomId) {
     // Якщо увімкнена охорона - спрацьовує тривога
     if (isArmed) {
         isAlarmTriggered = true;
-        return; // Далі нічого не робимо, тривога блокує звичайну роботу
+        return;
     }
 
     const room = houseState.find(r => r.id === roomId);
@@ -118,10 +118,9 @@ function toggleSpecialDevice(roomId, deviceId) {
 
 function updateDayNightCycle() {
     simulationTime++;
-    // Зміна дня і ночі кожні 20 "тіків" таймера
+    // Зміна дня і ночі 20 секунд
     if (simulationTime % 20 === 0) {
         isNight = !isNight;
-        // Повертаємо об'єкт для обробки в app.js (щоб не лізти в DOM тут)
         return { changed: true, isNight: isNight }; 
     }
     return { changed: false };
